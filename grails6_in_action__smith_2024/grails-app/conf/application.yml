@@ -3,29 +3,16 @@ info:
     name: '@info.app.name@'
     version: '@info.app.version@'
     grailsVersion: '@info.app.grailsVersion@'
-dataSource:
-  url: jdbc:h2:mem:devDb;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-  driverClassName: org.h2.Driver
-  username: sa
-  password: ''
-  pooled: true
-  jmxExport: true
-  dbCreate: update
-hibernate:
-  cache:
-    queries: false
-    use_second_level_cache: false
-    use_query_cache: false
 grails:
   mime:
     disable:
       accept:
         header:
           userAgents:
-          - Gecko
-          - WebKit
-          - Presto
-          - Trident
+            - Gecko
+            - WebKit
+            - Presto
+            - Trident
     types:
       all: '*/*'
       atom: application/atom+xml
@@ -33,23 +20,36 @@ grails:
       csv: text/csv
       form: application/x-www-form-urlencoded
       html:
-      - text/html
-      - application/xhtml+xml
+        - text/html
+        - application/xhtml+xml
       js: text/javascript
       json:
-      - application/json
-      - text/json
+        - application/json
+        - text/json
       multipartForm: multipart/form-data
       pdf: application/pdf
       rss: application/rss+xml
       text: text/plain
       hal:
-      - application/hal+json
-      - application/hal+xml
+        - application/hal+json
+        - application/hal+xml
       xml:
-      - text/xml
-      - application/xml
+        - text/xml
+        - application/xml
+    urlmapping:
+      cache:
+        maxsize: 1000
+    controllers:
+      defaultScope: singleton
+      upload:
+        # ~7GB
+        maxFileSize: 7365197824
+        maxRequestSize: 7365197824
+    converters:
+      encoding: UTF-8
   views:
+    default:
+      codec: html
     gsp:
       encoding: UTF-8
       htmlcodec: xml
@@ -58,7 +58,40 @@ grails:
         scriptlet: html
         taglib: none
         staticparts: none
-    default:
-      codec: html
   controllers:
     defaultScope: singleton
+
+hibernate:
+  cache:
+    queries: false
+    use_second_level_cache: false
+    use_query_cache: false
+
+environments:
+  production:
+    dataSource:
+      url: jdbc:h2:mem:devDb;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+      driverClassName: org.h2.Driver
+      username: sa
+      password: ''
+      pooled: true
+      jmxExport: true
+      dbCreate: update
+  development:
+    dataSource:
+      url: jdbc:h2:mem:devDb;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+      driverClassName: org.h2.Driver
+      username: sa
+      password: ''
+      pooled: true
+      jmxExport: true
+      dbCreate: update
+  test:
+    dataSource:
+      url: jdbc:h2:mem:devDb;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+      driverClassName: org.h2.Driver
+      username: sa
+      password: ''
+      pooled: true
+      jmxExport: true
+      dbCreate: update
