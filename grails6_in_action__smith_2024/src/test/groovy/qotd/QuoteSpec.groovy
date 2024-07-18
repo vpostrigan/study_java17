@@ -1,20 +1,23 @@
 package qotd
 
-import grails.test.mixin.TestFor
+import grails.gorm.transactions.Rollback
+import grails.testing.mixin.integration.Integration
 import spock.lang.Specification
 
-/**
- * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
- */
-@TestFor(Quote)
+@Integration
+@Rollback
 class QuoteSpec extends Specification {
 
-    def setup() {
+    void setup() {
+        // Below line would persist and not roll back
+        new Quote(author: 'Grails in Action', content: 'content 1').save(flush: true)
     }
 
     def cleanup() {
     }
 
     void "test something"() {
+        expect:
+        Quote.count() == 1
     }
 }

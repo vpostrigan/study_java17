@@ -1,13 +1,11 @@
 package qotd
 
-import grails.test.mixin.TestFor
+import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
+import grails.testing.web.controllers.ControllerUnitTest
 
-/**
- * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
- */
-@TestFor(QuoteViewController)
-class QuoteViewControllerSpec extends Specification {
+class QuoteViewControllerSpec extends Specification
+        implements ControllerUnitTest<QuoteViewController>, DomainUnitTest<Quote> {
 
     def setup() {
     }
@@ -15,6 +13,11 @@ class QuoteViewControllerSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "Test home"() {
+        when: "The message action is invoked"
+        controller.home()
+
+        then: "Hello is returned"
+        response.text == "<h1>Real Programmers do not eat Quiche</h1>"
     }
 }

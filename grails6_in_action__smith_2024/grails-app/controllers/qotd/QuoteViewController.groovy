@@ -20,5 +20,8 @@ public class QuoteViewController {
             q(randomQuote.content)
             p(randomQuote.author)
         }
+        // generate
+        // <q>Chuck Norris always uses his own design patterns, and his favorite is the
+        // Roundhouse Kick. </q><p>Chuck Norris Facts</p>
     }
 }
