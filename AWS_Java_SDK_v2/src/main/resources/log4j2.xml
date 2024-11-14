@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Properties>
+		<Property name="APP_NAME">log4j2</Property>
+		<Property name="PATTERN_LAYOUT_DEFAULT">%d{yyyy-MM-dd'T'HH:mm:ss.SSS} %-5p [%t] %c:%L - %m%n</Property>
+	</Properties>
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+		<PatternLayout pattern="${sys:PATTERN_LAYOUT_DEFAULT}"/>
+    </Console>
+    <!--
+		<RollingFile name="Daily" fileName="${env:APP_HOME_LOG}/${APP_NAME}.log"
+				filePattern="${env:APP_HOME_LOG}/${APP_NAME}.%d{yyyy-MM-dd}.log">
+			<PatternLayout pattern="${sys:PATTERN_LAYOUT_DEFAULT}"/>
+			<SizeBasedTriggeringPolicy size="1GB"/>
+			<DefaultRolloverStrategy max="30"/>
+		</RollingFile>
+		<RandomAccessFile name="daily-raf" fileName="${env:APP_HOME_LOG}/${APP_NAME}-raf.log" immediateFlush="false" append="false">
+			<PatternLayout pattern="${sys:PATTERN_LAYOUT_DEFAULT}"/>
+		</RandomAccessFile>
+    -->
+  </Appenders>
+  <Loggers>
+    <Logger name="org.apache.poi.util.XMLHelper" level="error"/>
+    <Logger name="org.apache.http" level="info"/>
+    <Root level="info">
+      <AppenderRef ref="Console"/>
+    </Root>
+		<!-- </AsyncLogger>
+		<Asyncroot level="info">default logger
+			<appender-ref ref="Daily"/>
+		</Asyncroot> -->
+  </Loggers>
+</Configuration>

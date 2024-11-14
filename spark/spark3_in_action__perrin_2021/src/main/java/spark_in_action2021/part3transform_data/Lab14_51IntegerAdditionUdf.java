@@ -1,0 +1,14 @@
+package spark_in_action2021.part3transform_data;
+
+import org.apache.spark.sql.api.java.UDF2;
+
+public class Lab14_51IntegerAdditionUdf implements UDF2<Integer, Integer, Integer> {
+
+    private static final long serialVersionUID = -2162134L;
+
+    @Override
+    public Integer call(Integer t1, Integer t2) throws Exception {
+        return t1 + t2;
+    }
+
+}
