@@ -1,8 +1,9 @@
 package com.grailsinaction
 
+import grails.testing.gorm.DomainUnitTest
 import spock.lang.*
 
-class PostIntegrationSpec extends Specification {
+class PostIntegrationSpec extends Specification implements DomainUnitTest<User> {
 
     def "Adding posts to user links post to user"() {
 

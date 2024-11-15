@@ -13,10 +13,10 @@ class CopingWithLineBreaks {
      * method name. The fixed version is commented out below the offending
      * line.
      */
-    private void invalidMethod
-            (String name) {
-//    private void invalidMethod(
-//            String name) {
+    //private void invalidMethod
+    //        (String name) {
+    private void invalidMethod(
+            String name) {
 
         // Groovy can't tell that we are concatenating two strings together
         // here because the first line is a complete statement. To fix the

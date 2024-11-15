@@ -22,6 +22,15 @@ configurations {
     }
 }
 
+// fixes: No tests found for given includes: [com.grailsinaction.UserIntegrationSpec
+tasks.withType(Test) {
+    useJUnitPlatform() // <-- Here
+    systemProperty "geb.env", System.getProperty('geb.env')
+    systemProperty "geb.build.reportsDir", reporting.file("geb/integrationTest")
+    systemProperty "webdriver.chrome.driver", System.getProperty('webdriver.chrome.driver')
+    systemProperty "webdriver.gecko.driver", System.getProperty('webdriver.gecko.driver')
+}
+
 dependencies {
     implementation("org.grails:grails-core")
     implementation("org.grails:grails-logging")
@@ -44,17 +53,23 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-logging")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
+    // https://youtrack.jetbrains.com/issue/IDEA-327614
+    // https://stackoverflow.com/questions/78702772/grails-6-2-support-is-missing-in-intellij-idea
+    implementation("org.grails:grails-shell:6.1.2")
+    // https://stackoverflow.com/questions/40557740/could-not-resolve-all-dependencies-for-configuration-profile
+    profile "org.grails.profiles:web"
+
     compileOnly("io.micronaut:micronaut-inject-groovy")
     console("org.grails:grails-console")
     runtimeOnly("com.bertramlabs.plugins:asset-pipeline-grails:4.3.0")
 
-    runtimeOnly("com.h2database:h2")
+    runtimeOnly("com.h2database:h2:1.4.200")
     runtimeOnly("org.apache.tomcat:tomcat-jdbc")
     runtimeOnly("org.fusesource.jansi:jansi:1.18")
     testImplementation("io.micronaut:micronaut-inject-groovy")
     testImplementation("org.grails:grails-gorm-testing-support")
     testImplementation("org.grails:grails-web-testing-support")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    //testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
     testImplementation("io.micronaut:micronaut-http-client")
 
 }

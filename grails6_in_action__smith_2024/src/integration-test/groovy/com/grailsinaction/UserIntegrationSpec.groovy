@@ -1,13 +1,24 @@
 package com.grailsinaction
 
 import spock.lang.*
+import grails.testing.gorm.DomainUnitTest
 
-class UserIntegrationSpec extends Specification {
+/**
+ * execute your test case:
+ * $ grails test-app integration:
+ */
+class UserIntegrationSpec extends Specification implements DomainUnitTest<User> {
 
-    def "Saving our first user to the database"() {
+    void "1"() {
+        expect: 1 == 1
+    }
+
+    // Listing 3.1 Saving and retrieving a domain object from the database
+    void "Saving our first user to the database"() {
 
         given: "A brand new user"
-        def joe = new User(loginId: 'joe', password: 'secret')
+        def joe = new User(loginId: 'joe', password: 'secret',
+                homepage: 'http://www.grailsinaction.com')
 
         when: "the user is saved"
         joe.save()
@@ -19,14 +30,16 @@ class UserIntegrationSpec extends Specification {
 
     }
 
+    // Listing 3.2 Updating users by changing field values and calling save()
     def "Updating a saved user changes its properties"() {
 
         given: "An existing user"
-        def existingUser = new User(loginId: 'joe', password: 'secret')
+        def existingUser = new User(loginId: 'joe', password: 'secret',
+                homepage: 'http://www.grailsinaction.com')
         existingUser.save(failOnError: true)
 
         when: "A property is changed"
-        def foundUser = User.get(existingUser.id)    
+        def foundUser = User.get(existingUser.id)
         foundUser.password = 'sesame'
         foundUser.save(failOnError: true)
 
@@ -34,7 +47,8 @@ class UserIntegrationSpec extends Specification {
         User.get(existingUser.id).password == 'sesame'
 
     }
-    
+
+    // Listing 3.3 Deleting objects from the database is a one-liner
     def "Deleting an existing user removes it from the database"() {
 
         given: "An existing user"
@@ -46,10 +60,13 @@ class UserIntegrationSpec extends Specification {
         foundUser.delete(flush: true)
 
         then: "The user is removed from the database"
+        // Spock lets you specify “then:” block assertions as Booleans,
+        // so you don’t need the full form of:
+        // User.exists(foundUser.id) == false
         !User.exists(foundUser.id)
 
     }
-    
+
     def "Saving a user with invalid properties causes an error"() {
 
         given: "A user which fails several field validations"
@@ -66,7 +83,7 @@ class UserIntegrationSpec extends Specification {
         !user.errors.getFieldError("loginId")
 
         // 'homepage' is now on the Profile class, so is not validated.
-    
+
     }
 
     def "Recovering from a failed save by fixing invalid properties"() {
@@ -83,7 +100,7 @@ class UserIntegrationSpec extends Specification {
         then: "The user saves and validates fine"
         !chuck.hasErrors()
         chuck.save()
-    
+
     }
 
     def "Ensure a user can follow other users"() {
@@ -101,7 +118,7 @@ class UserIntegrationSpec extends Specification {
         then: "Follower counts should match following people"
         2 == joe.following.size()
         1 == jill.following.size()
-        
+
     }
-    
+
 }
