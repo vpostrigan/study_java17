@@ -1,0 +1,37 @@
+﻿Структура,JVM 64-bit (байт),
+new BitSet(1024),                           168,   0.20%
+new boolean[1024],                          1040,  1.26%
+new byte[1024],                             1040,  1.26%
+new char[1024],                             2064,  2.51%
+new short[1024],                            2064,  2.51%
+new int[1024],                              4112,  5.01%
+new long[1024],                             8208,  10.01%
+new float[1024],                            4112,  5.01%
+new double[1024],                           8208,  10.01%
+,,
+new Boolean[1024],                          4112,  5.01%
+new Byte[1024],                             4112,  5.01%
+new Character[1024],                        18448, 22.50%
+new Short[1024],                            18448, 22.50%
+new Integer[1024],                          18448, 22.50%
+new Long[1024],                             25616, 31.25%
+new Float[1024],                            20496, 25.00%
+new Double[1024],                           28688, 34.99%
+new String[1024],                           61456, 74.97%
+,,
+new ArrayList<String>(1024),                61480, 75.0%
+new ArrayList<Boolean>(1024),               4136,  5.04%
+new ArrayList<Byte>(1024),                  4136,  5.04%
+new ArrayList<Character/Short>(1024),       18472, 22.53%
+new ArrayList<Integer/Float>(1024),         18472, 22.53%
+new ArrayList<Long/Double>(1024),           25640, 31.28%
+,,
+new LinkedList<String>() with 1024,         81968, 100%
+new LinkedList<Boolean>() with 1024,        24624, 30.04%
+new LinkedList<Byte>() with 1024,           24624, 30.04%
+new LinkedList<Character/Short>() with 1024,38960, 47.53%
+new LinkedList<Integer/Float>() with 1024,  38960, 47.53%
+new LinkedList<Long/Double>() with 1024,    46128, 56.27%
+,,
+Примечание: 1/8 часть значений типа Integer будут закешированы и не скушают лишнюю память.,,
+Все значения типов Boolean и Byte тоже будут закешированы.,,

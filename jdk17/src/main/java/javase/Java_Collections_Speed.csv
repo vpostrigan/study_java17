@@ -1,0 +1,87 @@
+﻿Collection,                           Size,   Adding,   Iterating, Removing,,,    Collection,                          Size,   Adding,Iterating,Removing
+ArrayList,                          100000.00,    30.10,    14.50, 67359.00,,,ArrayList,                          100000.00,    30.10,    14.50, 67359.00
+ArrayList,                           10000.00,     8.30,    11.20,  6323.00,,,LinkedList,                         100000.00,    46.40,    41.40,139326.00
+ArrayList,                            1000.00,     6.40,     9.40,   585.00,,,HashSet,                            100000.00,    28.60,   115.00,    69.50
+ArrayList,                             100.00,     6.80,     9.50,    92.90,,,LinkedHashSet,                      100000.00,    35.90,   103.00,    69.20
+ArrayList,                              10.00,     9.70,    13.20,    36.60,,,TreeSet,                            100000.00,   159.00,   106.00,   187.00
+LinkedList,                         100000.00,    46.40,    41.40,139326.00,,,newSetFromMap IdentityHashMap,      100000.00,    74.10,   216.00,   153.00
+LinkedList,                          10000.00,     9.30,    30.30, 13413.00,,,newSetFromMap WeakHashMap,          100000.00,    52.40,   148.00,    87.40
+LinkedList,                           1000.00,     8.70,    27.60,  1025.00,,,synchronized ArrayList,             100000.00,    22.60,   101.00, 98735.00
+LinkedList,                            100.00,     7.80,    19.80,   110.00,,,Vector,                             100000.00,    23.90,   298.00, 64333.00
+LinkedList,                             10.00,    11.20,    30.30,    38.70,,,synchronized LinkedList,            100000.00,    37.60,   100.00,132660.00
+HashSet,                            100000.00,    28.60,   115.00,    69.50,,,synchronized HashSet,               100000.00,    50.10,   138.00,    95.70
+HashSet,                             10000.00,    25.70,   324.00,    58.60,,,synchronized LinkedHashSet,         100000.00,    48.60,   103.00,    93.10
+HashSet,                              1000.00,    26.00,  2521.00,    59.20,,,synchronized TreeSet,               100000.00,   116.00,   105.00,   179.00
+HashSet,                               100.00,    30.00, 24490.00,    64.60,,,CopyOnWriteArrayList,               100000.00, 35354.00,    65.80,165197.00
+HashSet,                                10.00,    51.70,244045.00,   131.00,,,CopyOnWriteArraySet,                100000.00,106116.00,    63.30,165708.00
+LinkedHashSet,                      100000.00,    35.90,   103.00,    69.20,,,newSetFromMap ConcurrentHashMap     100000.00,    70.60,   291.00,   149.00
+LinkedHashSet,                       10000.00,    30.30,   101.00,    65.00,,,newSetFromMap ConcurrentSkipListMap,100000.00,   135.00,    96.80,   365.00
+LinkedHashSet,                        1000.00,    29.20,   100.00,    65.80,,,,,,,
+LinkedHashSet,                         100.00,    31.50,    98.80,    60.60,,,,,,,
+LinkedHashSet,                          10.00,    45.40,   110.00,    69.80,,,,,,,
+TreeSet,                            100000.00,   159.00,   106.00,   187.00,,,List<String> list = new LinkedList<String>();,,,,
+TreeSet,                             10000.00,    99.60,    77.60,   111.00,,,"Footprint{Objects=2, References=4, Primitives=[int x 2]}",,,,
+TreeSet,                              1000.00,    78.50,    57.50,    93.70,,, Object size: 48 bytes,,,,
+TreeSet,                               100.00,    54.00,    47.90,    83.70,,,,,,,
+TreeSet,                                10.00,    30.20,    51.00,    49.40,,,"Map<String, String> hashmap = new HashMap<String, String>();",,,,
+newSetFromMap IdentityHashMap,      100000.00,    74.10,   216.00,   153.00,,,"Footprint{Objects=2, References=20, Primitives=[int x 3, float]}",,,,
+newSetFromMap IdentityHashMap,       10000.00,    65.50,   370.00,   126.00,,, Object size: 120 bytes,,,,
+newSetFromMap IdentityHashMap,        1000.00,    60.40,  1644.00,   115.00,,,,,,,
+newSetFromMap IdentityHashMap,         100.00,    21.10, 14216.00,    48.90,,,"Map<Integer, String> linkedHashMap = new LinkedHashMap<Integer, String>();",,,,
+newSetFromMap IdentityHashMap,          10.00,    46.70,140162.00,   109.00,,,"Footprint{Objects=3, References=26, Primitives=[int x 4, float, boolean]}",,,,
+newSetFromMap WeakHashMap,          100000.00,    52.40,   148.00,    87.40,,,size: 160 bytes,,,,
+newSetFromMap WeakHashMap,           10000.00,    33.50,   217.00,    71.20,,,,,,,
+newSetFromMap WeakHashMap,            1000.00,    32.90,  1088.00,    72.20,,,,,,,
+newSetFromMap WeakHashMap,             100.00,    32.10,  9717.00,    64.30,,,,,,,
+newSetFromMap WeakHashMap,              10.00,    48.00, 98769.00,    93.00,,,,,,,
+Thread Safe Collections,,,,,,,,,,,
+synchronized ArrayList,             100000.00,    22.60,   101.00, 98735.00,,,,,,,
+synchronized ArrayList,              10000.00,    12.10,   101.00, 10084.00,,,,,,,
+synchronized ArrayList,               1000.00,    11.50,    99.50,  1023.00,,,,,,,
+synchronized ArrayList,                100.00,    11.40,   101.00,   144.00,,,,,,,
+synchronized ArrayList,                 10.00,    14.00,   111.00,    54.00,,,,,,,
+Vector,                             100000.00,    23.90,   298.00, 64333.00,,,,,,,
+Vector,                              10000.00,    20.40,   372.00,  5919.00,,,,,,,
+Vector,                               1000.00,    19.40,   372.00,   612.00,,,,,,,
+Vector,                                100.00,    19.30,   375.00,   145.00,,,,,,,
+Vector,                                 10.00,    22.90,   397.00,    97.50,,,,,,,
+synchronized LinkedList,            100000.00,    37.60,   100.00,132660.00,,,,,,,
+synchronized LinkedList,             10000.00,    19.20,    99.60, 13049.00,,,,,,,
+synchronized LinkedList,              1000.00,    22.20,    99.10,  1005.00,,,,,,,
+synchronized LinkedList,               100.00,    23.70,   102.00,   134.00,,,,,,,
+synchronized LinkedList,                10.00,    26.10,   115.00,    62.60,,,,,,,
+synchronized HashSet,               100000.00,    50.10,   138.00,    95.70,,,,,,,
+synchronized HashSet,                10000.00,    43.00,   347.00,    93.10,,,,,,,
+synchronized HashSet,                 1000.00,    42.70,  2555.00,    95.30,,,,,,,
+synchronized HashSet,                  100.00,    47.00, 24608.00,    97.40,,,,,,,
+synchronized HashSet,                   10.00,    85.70,245343.00,   204.00,,,,,,,
+synchronized LinkedHashSet,         100000.00,    48.60,   103.00,    93.10,,,,,,,
+synchronized LinkedHashSet,          10000.00,    45.60,   101.00,    88.10,,,,,,,
+synchronized LinkedHashSet,           1000.00,    48.70,   106.00,    94.60,,,,,,,
+synchronized LinkedHashSet,            100.00,    48.10,   101.00,    86.80,,,,,,,
+synchronized LinkedHashSet,             10.00,    57.80,   114.00,    93.40,,,,,,,
+synchronized TreeSet,               100000.00,   116.00,   105.00,   179.00,,,,,,,
+synchronized TreeSet,                10000.00,    74.10,    75.40,   122.00,,,,,,,
+synchronized TreeSet,                 1000.00,    63.50,    53.90,   103.00,,,,,,,
+synchronized TreeSet,                  100.00,    50.80,    46.20,    90.40,,,,,,,
+synchronized TreeSet,                   10.00,    29.10,    49.10,    57.60,,,,,,,
+CopyOnWriteArrayList,               100000.00, 35354.00,    65.80,165197.00,,,,,,,
+CopyOnWriteArrayList,                10000.00,  2115.00,    97.70, 36269.00,,,,,,,
+CopyOnWriteArrayList,                 1000.00,   217.00,    75.10,  1828.00,,,,,,,
+CopyOnWriteArrayList,                  100.00,    60.00,    63.40,   227.00,,,,,,,
+CopyOnWriteArrayList,                   10.00,    48.20,    71.00,   103.00,,,,,,,
+CopyOnWriteArraySet,                100000.00,106116.00,    63.30,165708.00,,,,,,,
+CopyOnWriteArraySet,                 10000.00, 28736.00,    91.20, 29820.00,,,,,,,
+CopyOnWriteArraySet,                  1000.00,  1143.00,    75.10,  1852.00,,,,,,,
+CopyOnWriteArraySet,                   100.00,   134.00,    63.40,   233.00,,,,,,,
+CopyOnWriteArraySet,                    10.00,    55.30,    73.00,   109.00,,,,,,,
+newSetFromMap ConcurrentHashMap,    100000.00,    70.60,   291.00,   149.00,,,,,,,
+newSetFromMap ConcurrentHashMap,     10000.00,    57.20,   485.00,   120.00,,,,,,,
+newSetFromMap ConcurrentHashMap,      1000.00,    53.40,  2869.00,   121.00,,,,,,,
+newSetFromMap ConcurrentHashMap,       100.00,    54.70, 24150.00,   140.00,,,,,,,
+newSetFromMap ConcurrentHashMap,        10.00,    68.70, 93921.00,   197.00,,,,,,,
+newSetFromMap ConcurrentSkipListMap,100000.00,   135.00,    96.80,   365.00,,,,,,,
+newSetFromMap ConcurrentSkipListMap, 10000.00,   113.00,    95.10,   285.00,,,,,,,
+newSetFromMap ConcurrentSkipListMap,  1000.00,    97.80,    94.70,   234.00,,,,,,,
+newSetFromMap ConcurrentSkipListMap,   100.00,    83.30,    95.20,   192.00,,,,,,,
+newSetFromMap ConcurrentSkipListMap,    10.00,    64.20,   112.00,   151.00,,,,,,,
