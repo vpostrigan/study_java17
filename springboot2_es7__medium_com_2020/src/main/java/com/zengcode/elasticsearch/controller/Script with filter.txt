@@ -1,0 +1,218 @@
+GET /users/_search
+{
+  "query": {
+    "bool": {
+      "must": {
+        "match_all": {}
+      },
+      "filter": {
+        "bool": {
+          "must": {
+            "script": {
+              "script": {
+                "lang": "painless",
+                "source": """
+                def flag = true;
+                return flag;
+                """,
+                "params": {
+                  "limit": 50
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+GET /users/_search
+{
+  "query": {
+    "bool": {
+      "must": {
+        "match_all": {}
+      },
+      "filter": {
+        "bool": {
+          "must": {
+            "script": {
+              "script": {
+                "lang": "painless",
+                "source": """
+                if (doc['age'].size() > 0 && doc['age'].value > 24) { return true;} return false;
+"""
+                         }
+                     }
+                   }
+                  }
+                }
+              }
+           }
+}
+================================================
+GET /users/_search
+{
+  "query": {
+    "bool": {
+      "must": {
+        "match_all": {}
+      },
+      "filter": {
+        "bool": {
+          "must": {
+            "script": {
+              "script": {
+                "lang": "painless",
+                "source": """
+                    if (doc['age'].size() > 0 && doc['age'].value > 24) { return true;} return false;
+                """
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+================================================
+POST _scripts/check-age
+{
+  "script" : {
+    "lang": "painless",
+    "source" : "if (params.age > 24) { return true;} return false;"
+  }
+
+}
+
+GET /users/_search
+{
+  "query": {
+    "bool": {
+      "must": {
+        "match_all": {}
+      },
+      "filter": {
+        "bool": {
+          "must": {
+            "script": {
+              "script": {
+                "id" : "check-age",
+                "params": {
+                  "age": 100
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+====================Filter By Script==========================
+POST _scripts/check-age4
+{
+    "script" : {
+      "lang": "painless",
+      "source" : "if (doc['age'].size() > 0 && doc['age'].value > params.checked_value) { return true;} return false;"
+    }
+}
+GET /users/_search
+{
+  "query": {
+    "bool": {
+      "must": {
+        "match": { "name" : "Chiwa Kantawong"}
+      },
+      "filter": {
+        "bool": {
+          "must": {
+            "script": {
+              "script": {
+                "id" : "check-age4",
+                "params" : { "checked_value" : 24}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+=====================Multiple Filter=============
+POST _scripts/check-fullName
+{
+    "script" : {
+      "lang": "painless",
+      "source" : "if (doc['full_name.keyword'].size() > 0) { return true;} return false;"
+    }
+}
+GET /users/_search
+{
+  "query": {
+    "bool": {
+      "must": {
+        "match": { "name" : "Chiwa"}
+      },
+      "filter": {
+        "bool": {
+          "must":[
+                    {
+                    "script": {
+                      "script": {
+                        "id" : "check-age5",
+                        "params" : { "checked_value" : 24}
+                                }
+                            }
+                    },
+                    {
+                    "script": {
+                      "script": {
+                        "id" : "check-fullName"
+                                }
+                            }
+                    }
+          ]
+        }
+      }
+    }
+  }
+}
+======================================
+GET /users/_search
+{
+  "query": {
+    "bool": {
+      "must": {
+        "match": { "name" : "Chiwa"}
+      },
+      "filter": {
+        "bool": {
+          "must":[
+                    {
+                    "script": {
+                      "script": {
+                        "id" : "check-age5",
+                        "params" : { "checked_value" : 24}
+                                }
+                            }
+                    },
+                    {
+                    "script": {
+                      "script": {
+                        "id" : "check-fullName"
+                                }
+                            }
+                    },
+                    {
+                      "match" : {
+                        "new_full_name.en" : "abc"
+                      }
+                    }
+          ]
+        }
+      }
+    }
+  }
+}
+https://www.elastic.co/blog/lost-in-translation-boolean-operations-and-filters-in-the-bool-query

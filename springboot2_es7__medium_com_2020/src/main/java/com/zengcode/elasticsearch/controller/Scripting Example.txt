@@ -1,0 +1,200 @@
+GET users/_search
+{
+  "query": {
+    "match_all": {
+
+    }
+  },
+  "script_fields": {
+    "next_year_age": {
+      "script": {
+        "lang": "painless",
+        "source": """
+           Long next_age = doc['age'].value + 1;
+           return next_age
+        """
+      }
+    }
+  }
+}
+
+-----------------------------------------------------
+
+GET users/_search
+{
+  "query": {
+    "match_all": {
+
+    }
+  },
+  "script_fields": {
+    "next_year_age": {
+      "script": {
+        "lang": "painless",
+        "source": """
+           if (doc['age'].value > 24) {
+             return doc['age'].value + " is Older"
+           }
+           return doc['age'].value + " is Younger"
+        """
+      }
+    }
+  }
+}
+-----------------------------------------------------
+GET users/_search
+{
+  "query": {
+    "match_all": {
+
+    }
+  },
+  "script_fields": {
+    "next_year_age": {
+      "script": {
+        "lang": "painless",
+        "source": """
+
+           return doc['age'].value + 1
+        """
+      }
+    },
+    "this_year_age": {
+      "script": {
+        "lang": "painless",
+        "source": """
+
+           return doc['age']
+        """
+      }
+    }
+  }
+}
+-------------------------------------------------------
+DELETE customers
+
+PUT customers
+{
+  "mappings": {
+    "properties": {
+      "first_name": {
+        "type": "keyword"
+      },
+      "last_name": {
+        "type": "text"
+      }
+    }
+  }
+}
+-----------------------------------------------------
+PUT customers/_doc/1?refresh
+{
+  "first_name": "Barry",
+  "last_name": "White",
+  "age" : 20
+}
+
+PUT customers/_doc/2?refresh
+{
+  "first_name": "Chiwa",
+  "last_name": "Kantawong",
+  "age" : 25
+}
+
+GET customers/_mapping
+
+GET customers/_search
+{
+  "query": {
+    "match_all": {}
+  },
+  "script_fields": {
+    "age_report": {
+      "script": {
+        "lang": "painless",
+        "source": """
+           if (doc['age'].value >= params.comparation_age) {
+             return doc['first_name'].value + "= " + (doc['age'].value) + " gte " + params.comparation_age
+           } else {
+            return doc['first_name'].value + " = " + (doc['age'].value) + " lt " + params.comparation_age
+           }
+        """,
+        "params": {
+          "comparation_age" : 20
+        }
+      }
+    }
+  }
+}
+
+
+GET customers/_search
+{
+  "query": {
+    "match_all": {
+
+    }
+  },
+  "script_fields": {
+    "next_year_age": {
+      "script": {
+        "lang": "painless",
+        "source": """
+           return doc['first_name'].value + " " + (doc['age'].value +1)
+        """
+      }
+    }
+  }
+}
+
+GET customers/_search
+-----------------------------------------------------
+#return value, last_name = text can not using doc
+GET customers/_search
+{
+  "script_fields": {
+    "full_name": {
+      "script": {
+        "lang": "painless",
+       "source": "doc['first_name'].value + ' ' + params._source.last_name"
+      }
+    }
+  }
+}
+-----------------------------------------------------
+#return value,
+GET customers/_search
+{
+  "script_fields": {
+    "full_name": {
+      "script": {
+        "lang": "painless",
+       "source": "params._source.first_name + ' ' + params._source.last_name"
+      }
+    }
+  }
+}
+-----------------------------------------------------
+#return value
+GET customers/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match_all": {}}
+      ],
+      "filter": [
+        { "range": { "age": { "gte": 21 }}}
+      ]
+    }
+  },
+
+  "script_fields": {
+    "full_name": {
+      "script": {
+        "lang": "painless",
+       "source": "doc['first_name'].value + ' ' + params._source.last_name + ' = ' + doc['age'].value"
+      }
+    }
+  }
+}

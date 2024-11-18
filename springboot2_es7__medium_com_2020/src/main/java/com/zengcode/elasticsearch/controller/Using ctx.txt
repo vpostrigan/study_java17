@@ -1,0 +1,77 @@
+GET users/_doc/001
+
+POST users/_update
+{
+  "script": {
+    "lang": "painless",
+    "source": """
+    ctx._source.last = params.last;
+    ctx._source.nick = params.nick
+    """,
+    "params": {
+      "last": "gaudreau",
+      "nick": "hockey"
+    }
+  }
+}
+
+POST users/_update_by_query?wait_for_completion=true&conflicts=proceed
+{
+"script": {
+"lang": "painless",
+"source": """
+ctx._source.last = params.last;
+ctx._source.nick = params.nick;
+""",
+"params": {
+"last": "gaudreau",
+"nick": "hockey edit 001"
+}
+},
+"query": {
+"term": {
+"_id": "001"
+}
+}
+}
+POST users/_update_by_query?wait_for_completion=true&conflicts=proceed
+{
+  "script": {
+    "lang": "painless",
+    "source": """
+      ctx._source.last = params.last;
+      ctx._source.nick = params.nick;
+      ctx._source.full_name = 'Chiwa Kantawong'
+    """,
+    "params": {
+      "last": "gaudreau",
+      "nick": "hockey edit 001"
+      }
+    },
+    "query": {
+        "term": {
+        "_id": "001"
+        }
+      }
+}
+
+POST users/_update_by_query?wait_for_completion=true&conflicts=proceed
+{
+  "script": {
+    "lang": "painless",
+    "source": """
+      ctx._source.last = params.last;
+      ctx._source.nick = params.nick;
+      ctx._source.remove('full_name')
+    """,
+    "params": {
+        "last": "gaudreau",
+        "nick": "hockey edit 001"
+      }
+    },
+    "query": {
+      "term": {
+        "_id": "001"
+      }
+  }
+}
