@@ -1,0 +1,32 @@
++ https://www.youtube.com/watch?v=CryOrxL0JA8   IntelliJ IDEA: Kubernetes Plugin
+
+1)
+How to get
+'COPY out/artifacts/springboot3_kubernetes_2024_jar springboot3_kubernetes_2024_jar'
+
+look 1.png
+
+2) создать namespace
+\k8s\ns.yml
+
+3) deployment.yml
+kdep
+
+4) service.yml
+kservice
+
+run 'Apply to cluster'
+
+5) http://localhost:30009/
+Hello from Spring Boot
+
+http://localhost:30009/home
+JetBrains
+
+http://localhost:30009/student
+{"id":1,"firstName":"John","lastName":"Beatles"}
+
+
+6) load balancer
+lb-service.yml
+kser

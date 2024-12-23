@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: com.study.springboot3_kubernetes_2024.Springboot3Kubernetes2
+ 024Application
+
