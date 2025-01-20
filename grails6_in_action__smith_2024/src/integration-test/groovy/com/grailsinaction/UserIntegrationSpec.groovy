@@ -10,7 +10,8 @@ import grails.testing.gorm.DomainUnitTest
 class UserIntegrationSpec extends Specification implements DomainUnitTest<User> {
 
     void "1"() {
-        expect: 1 == 1
+        expect:
+        1 == 1
     }
 
     // Listing 3.1 Saving and retrieving a domain object from the database
@@ -67,12 +68,13 @@ class UserIntegrationSpec extends Specification implements DomainUnitTest<User> 
 
     }
 
+    // Listing 3.5 Interrogating the results of a failed validation
     def "Saving a user with invalid properties causes an error"() {
 
         given: "A user which fails several field validations"
-        def user = new User(loginId: 'joe', password: 'tiny')
+        def user = new User(loginId: 'joe', password: 'tiny', homepage: 'not-a-url')
 
-        when:  "The user is validated"
+        when: "The user is validated"
         user.validate()
 
         then:
@@ -84,13 +86,17 @@ class UserIntegrationSpec extends Specification implements DomainUnitTest<User> 
 
         // 'homepage' is now on the Profile class, so is not validated.
 
+        "url.invalid" == user.errors.getFieldError("homepage").code
+        "not-a-url" == user.errors.getFieldError("homepage").rejectedValue
+        !user.errors.getFieldError("userId")
     }
 
+    // Listing 3.6 Recovering from a failed validation
     def "Recovering from a failed save by fixing invalid properties"() {
 
         given: "A user that has invalid properties"
         def chuck = new User(loginId: 'chuck', password: 'tiny')
-        assert chuck.save()  == null
+        assert chuck.save() == null
         assert chuck.hasErrors()
 
         when: "We fix the invalid properties"
@@ -103,12 +109,13 @@ class UserIntegrationSpec extends Specification implements DomainUnitTest<User> 
 
     }
 
+    // Listing 3.18 A simple test case for adding followers
     def "Ensure a user can follow other users"() {
 
         given: "A set of baseline users"
-        def joe = new User(loginId: 'joe', password:'password').save()
-        def jane = new User(loginId: 'jane', password:'password').save()
-        def jill = new User(loginId: 'jill', password:'password').save()
+        def joe = new User(loginId: 'joe', password: 'password').save()
+        def jane = new User(loginId: 'jane', password: 'password').save()
+        def jill = new User(loginId: 'jill', password: 'password').save()
 
         when: "Joe follows Jane & Jill, and Jill follows Jane"
         joe.addToFollowing(jane)

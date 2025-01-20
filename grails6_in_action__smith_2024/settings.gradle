@@ -6,9 +6,9 @@ pluginManagement {
         gradlePluginPortal()
     }
     plugins {
-        id "org.grails.grails-web" version "6.2.0"
-        id "org.grails.grails-gsp" version "6.2.0"
-        id "com.bertramlabs.asset-pipeline" version "4.3.0"
+        id "org.grails.grails-web" version "6.2.2"
+        id "org.grails.grails-gsp" version "6.2.4"
+        id "com.bertramlabs.asset-pipeline" version "4.5.1"
     }
 }
 

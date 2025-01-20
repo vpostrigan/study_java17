@@ -1,7 +1,7 @@
 package com.grailsinaction
 
 class Profile {
-    User user
+    User user // 1 to 1 mapping
     byte[] photo
     String fullName
     String bio
@@ -21,4 +21,5 @@ class Profile {
         timezone nullable: true
         jabberAddress email: true, nullable: true
     }
+
 }

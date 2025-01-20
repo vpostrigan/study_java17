@@ -4,18 +4,22 @@ class Post {
     String content
     Date dateCreated
 
-    static belongsTo = [ user: User ]
-    static hasMany = [ tags: Tag ]
+    static belongsTo = [user: User] // 1:m  (Points to the owning object)
+    // cascading operations
+    // if any User is deleted, the matching Post object is also deleted
+
+    static hasMany = [tags: Tag] // Models a Post with many Tags
 
     static constraints = {
         content blank: false
     }
 
     static mapping = {
-        sort dateCreated: "desc"
+        sort dateCreated: "desc"  // Specifies sort order for Post
     }
-    
+
     String toString() { return "Post '${shortContent}' (id: $id) for user '${user?.loginId}'" }
+
     String getDisplayString() { return shortContent }
 
     String getShortContent() {

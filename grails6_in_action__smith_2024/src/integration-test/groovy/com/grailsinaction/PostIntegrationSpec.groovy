@@ -5,6 +5,10 @@ import spock.lang.*
 
 class PostIntegrationSpec extends Specification implements DomainUnitTest<User> {
 
+    // Listing 3.11 The User.addToPosts() method makes 1:m relationships easy
+    // Once you have a one-to-many relationship between User and Post,
+    // Grails automatically adds two new methods to your User class:
+    // User.addToPosts() and User.removeFromPosts()
     def "Adding posts to user links post to user"() {
 
         given: "A brand new user"
@@ -20,6 +24,7 @@ class PostIntegrationSpec extends Specification implements DomainUnitTest<User> 
         3 == User.get(user.id).posts.size()
     }
 
+    // Listing 3.12 Accessing a User’s posts by walking the object graph
     def "Ensure posts linked to a user can be retrieved"() {
 
         given: "A user with several posts"
@@ -35,9 +40,9 @@ class PostIntegrationSpec extends Specification implements DomainUnitTest<User> 
 
         then: "The posts appear on the retrieved user"
         sortedPostContent == ['First', 'Second', 'Third']
-        
     }
 
+    // Listing 3.17 A complex many-to-many scenario for posts and tags
     def "Exercise tagging several posts with various tags"() {
 
         given: "A user with a set of tags"
@@ -52,18 +57,18 @@ class PostIntegrationSpec extends Specification implements DomainUnitTest<User> 
         def groovyPost = new Post(content: "A groovy post")
         user.addToPosts(groovyPost)
         groovyPost.addToTags(tagGroovy)
-        
+
         def bothPost = new Post(content: "A groovy and grails post")
         user.addToPosts(bothPost)
         bothPost.addToTags(tagGroovy)
         bothPost.addToTags(tagGrails)
 
         then:
-        user.tags*.name.sort() == [ 'grails', 'groovy']
+        user.tags*.name.sort() == ['grails', 'groovy']
         1 == groovyPost.tags.size()
         2 == bothPost.tags.size()
 
     }
-    
+
 
 }

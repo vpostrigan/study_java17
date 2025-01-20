@@ -1,4 +1,4 @@
-package com.grails6_in_action__smith_2024
+package com.grailsinaction
 
 class UrlMappings {
     static mappings = {

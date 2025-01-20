@@ -55,13 +55,13 @@ dependencies {
 
     // https://youtrack.jetbrains.com/issue/IDEA-327614
     // https://stackoverflow.com/questions/78702772/grails-6-2-support-is-missing-in-intellij-idea
-    implementation("org.grails:grails-shell:6.1.2")
+    implementation("org.grails:grails-shell:6.2.2")
     // https://stackoverflow.com/questions/40557740/could-not-resolve-all-dependencies-for-configuration-profile
     profile "org.grails.profiles:web"
 
     compileOnly("io.micronaut:micronaut-inject-groovy")
     console("org.grails:grails-console")
-    runtimeOnly("com.bertramlabs.plugins:asset-pipeline-grails:4.3.0")
+    runtimeOnly("com.bertramlabs.plugins:asset-pipeline-grails:4.5.1")
 
     runtimeOnly("com.h2database:h2:1.4.200")
     runtimeOnly("org.apache.tomcat:tomcat-jdbc")
@@ -69,7 +69,6 @@ dependencies {
     testImplementation("io.micronaut:micronaut-inject-groovy")
     testImplementation("org.grails:grails-gorm-testing-support")
     testImplementation("org.grails:grails-web-testing-support")
-    //testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
     testImplementation("io.micronaut:micronaut-http-client")
 
 }

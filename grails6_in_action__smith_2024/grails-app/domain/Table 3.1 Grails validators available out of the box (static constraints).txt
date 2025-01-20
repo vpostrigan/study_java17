@@ -1,0 +1,42 @@
+
+Table 3.1 Grails validators available out of the box
+
+Name    | Description             |         Example              | Error properties
+----------------------------------------------------------------------------------
+blank     Ensures string            password(blank:false)          blank
+          isn’t blank (or null).
+email     Ensures field is          userEmail(email:true)          email.invalid
+          a well-formed email
+          address.
+inList    Ensures value appears in  country(inList:['Australia',   not.inList
+          supplied range or         'England'])
+          collection.
+matches   Ensures field matches     loginId(matches:               matches.invalid
+          the supplied regular      '[0-9]{7}[A-Za-z]')
+          expression.
+maxSize   Ensures size of field     orderQuantity(maxSize:100)     maxSize.exceeded
+          in database doesn’t
+          exceed supplied value.
+minSize   Ensures size of field     orderQuantity(minSize:10)      minSize.notmet
+          in database always
+          exceeds supplied value.
+nullable  Specifies whether the     password(nullable: false)      nullable
+          property is allowed to
+          be null.
+size      Specifies a range for     loginId(size:3..20)            size.toosmall or
+          min and max length                                       size.toobig
+          of a string or
+          size of an int
+          or collection.
+unique    Specifies whether the     loginId(unique:true)           unique
+          property must be unique.
+url       Ensures that the          homepage(url:true)             url.invalid
+          field contains a
+          valid URL.
+validator Allows custom             See section 3.3.3              validator.invalid
+          validation by supplying
+          a closure.
+bindable  Affects whether a         See chapter 11 on security     N/A
+          property will bind
+          via automatic
+          data binding.
