@@ -1,0 +1,220 @@
+ToC
+		Table of contents
+
+	T00.01	Overview	2			5. Funding
+					T05.01.1	Loan-to-deposit ratio by reference period	74
+		1. General statistics			T05.01.2	Loan-to-deposit ratio by country	75
+	T01.01	Significant institutions by country and classification	3		T05.01.3	Loan-to-deposit ratio by classification	76
+	T01.02	Concentration of total assets	4
+						6. Liquidity
+		2. Balance sheet composition and profitability			T06.01.1	Liquidity coverage ratio by reference period	79
+	T02.01.1	Profit and loss figures by reference period	5		T06.01.2	Liquidity coverage ratio by country	80
+	T02.01.2	Profit and loss figures by country	6		T06.01.3	Liquidity coverage ratio by classification	82
+	T02.01.3	Profit and loss figures by classification	7		T06.02.1	Liquidity coverage ratio band by reference period	85
+	T02.02.1	Key performance indicators by reference period	10		T06.02.2	Liquidity coverage ratio band by country	86
+	T02.02.2	Key performance indicators by country	11		T06.02.3	Liquidity coverage ratio band by classification	87
+	T02.02.3	Key performance indicators by classification	12
+	T02.03.1	Composition of assets by reference period	15
+	T02.03.2	Composition of assets by country	16
+	T02.03.3	Composition of assets by classification	18
+	T02.04.1	Composition of liabilities and equity by reference period	21
+	T02.04.2	Composition of liabilities and equity by country	22
+	T02.04.3	Composition of liabilities and equity by classification	24
+	T02.05.1	Total exposure to general governments by country of the counterparty by reference period	27
+	T02.05.2	Total exposure to general governments by country of the counterparty by country	28
+	T02.05.3	Total exposure to general governments by country of the counterparty by classification	30
+
+		3. Capital adequacy and leverage
+	T03.01.1	Total capital ratio and its components by reference period	32
+	T03.01.2	Total capital ratio and its components by country	33
+	T03.01.3	Total capital ratio and its components by classification	34
+	T03.02.1	CET1 ratio band by reference period	37
+	T03.02.2	CET1 ratio band by country	38
+	T03.02.3	CET1 ratio band by classification	39
+	T03.03.1	Leverage ratios by reference period	41
+	T03.03.2	Leverage ratios by country	42
+	T03.03.3	Leverage ratios by classification	44
+	T03.04.1	Leverage ratio band by reference period	47
+	T03.04.2	Leverage ratio band by country	48
+	T03.04.3	Leverage ratio band by classification	49
+	T03.05.1	Risk exposures composition by reference period	51
+	T03.05.2	Risk exposures composition by country	52
+	T03.05.3	Risk exposures composition by classification	54
+	T03.06	IRB credit risk parameters by residence of the obligor	57
+
+		4. Asset quality
+	T04.01	Asset quality: performing and non-performing exposures by instrument and counterparty	58
+	T04.02.1	Asset quality: non‐performing loans and advances by reference period	59
+	T04.02.2	Asset quality: non‐performing loans and advances by country	60
+	T04.02.3	Asset quality: non‐performing loans and advances by classification	61
+	T04.03.1	Asset quality: forbearance by instrument and counterparty	64
+	T04.03.2	Asset quality: non-performing exposures and forbearance by country	65
+	T04.03.3	Asset quality: non-performing exposures and forbearance by classification	66
+	T04.04.1	Asset quality: fair value hierarchy by reference period	69
+	T04.04.2	Asset quality: fair value hierarchy by country	70
+	T04.04.3	Asset quality: fair value hierarchy by classification	71
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+T00.01
+	T00.01 Overview
+	(EUR billions; percentages; number of institutions)
+
+	Main figures	Q1 2018	Q2 2018	Q3 2018	Q4 2018	Q1 2019
+	Number of SIs
+	Full sample	109	109	109	110	114
+	Liquidity sample 1)	101	101	101	102	106
+	Balance sheet composition
+	Total assets	21,060.06	21,246.66	21,223.48	21,369.48	22,695.68
+	Total liabilities	19,662.00	19,852.58	19,817.47	19,916.50	21,184.16
+	Equity	1,398.06	1,394.08	1,406.01	1,452.97	1,511.51
+	Key indicators
+	Return on equity	6.61%	6.88%	6.85%	6.16%	5.76%
+	Cost-to-income ratio	67.43%	65.85%	65.08%	65.83%	69.18%
+	Capital adequacy and leverage
+	CET 1 ratio 2)	14.16%	14.10%	14.19%	14.39%	14.34%
+	Tier 1 ratio 2)	15.34%	15.30%	15.40%	15.59%	15.59%
+	Total capital ratio 2)	17.81%	17.76%	17.83%	18.00%	17.99%
+	Leverage ratio (transitional definition)	5.36%	5.36%	5.32%	5.50%	5.40%
+	Leverage ratio (fully phased-in definition)	5.14%	5.14%	5.11%	5.29%	5.23%
+	Asset quality
+	Level 1 as a share of total assets 3)	8.48%	8.26%	8.17%	7.37%	7.74%
+	Level 2 as a share of total assets 3)	12.85%	12.99%	12.65%	12.66%	13.03%
+	Level 3 as a share of total assets 3)	0.93%	0.87%	0.85%	0.90%	0.84%
+	Non-performing loans ratio	4.70%	4.40%	4.17%	3.81%	3.67%
+	Funding
+	Loan-to-deposit ratio	118.64%	118.54%	118.42%	118.66%	118.04%
+	Liquidity
+	Liquidity coverage ratio	141.90%	140.91%	140.92%	145.78%	149.71%
+
+	Source: ECB.
+Notes: Significant institutions at the highest level of consolidation for which common reporting (COREP) and financial reporting (FINREP) are available.
+1) Only banks that are required to report liquidity information at the highest level of consolidation in the Single Supervisory Mechanism (SSM) are included in the liquidity coverage ratio calculations.
+2) CET1, Tier 1 and total capital ratios are based on the transitional provisions laid down in Articles 465 to 491 of Regulation (EU) No 575/2013 on prudential requirements for credit institutions and investment firms (the Capital Requirements Regulation).
+3) The Level 1, 2 and 3 asset categories include only financial instruments measured at fair value.
+
+
+T01.01
+	T01.01 Significant institutions by country and classification
+	(number of institutions)
+
+	Country	Q1 2019		Size	Q1 2019
+	Belgium	7		Banks with total assets
+	Germany	21		Less than €30 billion	28
+	Estonia	3		Between €30 billion and €100 billion	47
+	Ireland	6		Between €100 billion and €200 billion	15
+	Greece	4		More than €200 billion	16
+	Spain	12		G-SIBs 2)	8
+	France	11		Total	114
+	Italy	12
+	Cyprus	3
+	Latvia	3
+	Lithuania	2
+	Luxembourg	6
+				Geographical diversification	Q1 2019
+	Malta	3
+	Netherlands	6		Banks with significant domestic exposures 3)	21
+	Austria	6		Banks with largest non-domestic exposures
+	Portugal	3		SSM	59
+	Slovenia	3		Non-SSM EEA 4)	17
+	Slovakia 1)	-		Non-EEA Europe 5)	6
+	Finland	3		RoW 6)	11
+	Total	114		Total	114
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Source: ECB.
+Notes: Significant institutions at the highest level of consolidation for which common reporting (COREP) and financial reporting (FINREP) are available. The number of entities per reference period reflects changes resulting from amendments to the list of SIs following assessments by ECB Banking Supervision, which generally occur on an annual basis, and mergers and acquisitions.
+1) There are no significant institutions at the highest level of consolidation in Slovakia.
+2) G-SIBs: global systemically important banks. Data based on the last available list of G-SIBs as published by the Financial Stability Board.
+3) Domestic exposures more than 95% of total debt securities and loans and advances.
+4) Countries in the European Economic Area (EEA) not participating in the Single Supervisory Mechanism (SSM).
+5) European countries not in the EEA.
+6) RoW: rest of the world, i.e. all countries except European countries.
+7) Risk-based classification using Supervisory Review and Evaluation Process (SREP) results. Non-rated banks are those which have not been assigned a score in a specific SREP cycle, owing for example a recent change in significance, a merger or restructuring, etc. Classification as non-rated does not therefore necessarily indicate a high risk.
+
+
+
+
+
+
+T03.01.2
+	T03.01.2 Total capital ratio and its components by country
+	(EUR billions; percentages)
+
+	Country
+(Q1 2019)	Total risk exposure amount	Total capital 2)
+					Tier 1 2)
+							CET1 2) 3)
+			Amount	Ratio	Amount	Ratio	Amount	Ratio
+	Belgium	206.50	44.14	21.38%	39.95	19.35%	37.83	18.32%
+	Germany	1,227.62	233.24	19.00%	201.65	16.43%	188.64	15.37%
+	Estonia	C	C	27.69%	C	27.69%	C	27.69%
+	Ireland	222.58	47.24	21.23%	42.53	19.11%	41.29	18.55%
+	Greece	169.32	26.26	15.51%	25.22	14.89%	25.20	14.88%
+	Spain	1,457.76	220.08	15.10%	192.72	13.22%	171.52	11.77%
+	France	2,498.98	452.93	18.12%	388.10	15.53%	358.17	14.33%
+	Italy	1,066.97	173.57	16.27%	150.07	14.06%	138.85	13.01%
+	Cyprus	22.46	3.91	17.41%	3.69	16.42%	3.34	14.86%
+	Latvia	4.88	1.11	22.71%	1.09	22.28%	1.09	22.28%
+	Lithuania	C	C	C	C	C	C	C
+	Luxembourg	54.31	11.30	20.80%	11.11	20.45%	10.96	20.17%
+	Malta	9.67	1.80	18.56%	1.56	16.11%	1.56	16.11%
+	Netherlands	652.23	146.53	22.47%	121.66	18.65%	106.65	16.35%
+	Austria	260.66	46.75	17.94%	38.38	14.73%	35.36	13.56%
+	Portugal	121.31	18.65	15.38%	16.89	13.92%	15.78	13.01%
+	Slovenia	13.95	2.55	18.30%	2.55	18.30%	2.55	18.30%
+	Slovakia 1)	-	-	-	-	-	-	-
+	Finland	218.34	44.97	20.60%	40.07	18.35%	35.67	16.34%
+	Total	8,229.65	1,480.67	17.99%	1,282.85	15.59%	1,180.06	14.34%
+
+	Source: ECB.
+Notes: Significant institutions at the highest level of consolidation for which common reporting (COREP) and financial reporting (FINREP) are available.
+C: the value is suppressed for confidentiality reasons.
+1) There are no significant institutions at the highest level of consolidation in Slovakia.
+2) Total capital, Tier 1 and CET1 follow the transitional provisions laid down in Articles 465 to 491 of Regulation (EU) No 575/2013 on prudential requirements for credit institutions and investment firms (CRR).
+3) CET1 stands for Common Equity Tier 1.
+
+

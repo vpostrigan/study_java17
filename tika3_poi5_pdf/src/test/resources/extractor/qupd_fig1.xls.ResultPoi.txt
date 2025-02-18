@@ -1,0 +1,49 @@
+qupd_tbl1
+Domestic Uranium Production Report 2nd Quarter 2021
+Release Date: August 2021
+Next Release Date: November 2021
+
+Table 1. Total production of uranium concentrate in the United States, 1996 to second-quarter 2021
+pounds U3O8 
+Calendar-year quarter	First quarter	Second quarter	Third quarter	Fourth quarter	Calendar-year total
+1996	1,734,427	1,460,058	1,691,796	1,434,425	6,320,706
+1997	1,149,050	1,321,079	1,631,384	1,541,052	5,642,565
+1998	1,151,587	1,143,942	1,203,042	1,206,003	4,704,574
+1999	1,196,225	1,132,566	1,204,984	1,076,897	4,610,672
+2000	1,018,683	983,330	981,948	973,585	3,975,545
+2001	709,177	748,298	628,720	553,060	2,639,256
+2002	620,952	643,432	579,723	500,000	2,344,107
+2003	400,000	600,000	400,000	600,000	2,000,000
+2004	600,000	400,000	588,738	600,000	2,282,406
+2005	709,600	630,053	663,068	686,456	2,689,178
+2006	931,065	894,268	1,083,808	1,196,485	4,105,626
+2007	1,162,737	1,119,536	1,075,460	1,175,845	4,533,578
+2008	810,189	1,073,315	980,933	1,037,946	3,902,383
+2009	880,036	982,760	956,657	888,905	3,708,358
+2010	876,084	1,055,102	1,150,725	1,146,281	4,228,192
+2011	1,063,047	1,189,083	846,624	892,013	3,990,767
+2012	1,078,404	1,061,289	1,048,018	957,936	4,145,647
+2013	1,147,031	1,394,232	1,171,278	946,301	4,658,842
+2014	1,242,179	1,095,011	1,468,608	1,085,534	4,891,332	
+2015	1,154,408	789,980	774,541	624,278	3,343,207
+2016	626,522	745,306	818,783	725,947	2,916,558
+2017	450,215	726,375	643,212	622,987	2,442,789
+2018	226,780	365,421	527,064	328,680	1,447,945
+2019	58,481	44,569	32,211	38,614	173,875
+2020	8,098	W	W	W	W
+P2021	W	W	-	-	-	
+E = Estimated data  P = Preliminary data  NA = Not available  -- = Not applicable. W = Withheld	
+Notes: The reported fourth quarter 2002 production amount was adjusted by rounding to the nearest 100,000 pounds to avoid disclosure of individual company data. This adjustment also affects the 2002 annual production. The reported production amounts in 2003 and the first, second, and fourth quarters of 2004 were adjusted by rounding to the nearest 200,000 pounds to avoid disclosure of individual company data.  The reported 2004 total is the actual production for 2004.  Second-quarter 2020 through second-quarter 2021 production was withheld due to confidentiality concerns. Totals may not equal the sum of components because of independent rounding.	
+Source: U.S. Energy Information Administration: Form EIA-851A, Domestic Uranium Production Report (Annual), and Form EIA-851Q, Domestic Uranium Production Report (Quarterly)	
+
+U.S. Energy Information Administration / Domestic Uranium Production Report 2nd Quarter 2020	
+qupd_fig1
+Domestic Uranium Production Report 2nd Quarter 2021
+Release Date: August 2021
+Next Release Date: November 2021
+Figure 1.  Uranium concentrate production in the United States, 1996 to second-quarter 2021
+
+pounds U3O8
+
+
+U.S. Energy Information Administration / Domestic Uranium Production Report 1st Quarter 2021	
