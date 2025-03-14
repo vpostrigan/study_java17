@@ -40,6 +40,7 @@ class PostIntegrationSpec extends Specification implements DomainUnitTest<User> 
 
         then: "The posts appear on the retrieved user"
         sortedPostContent == ['First', 'Second', 'Third']
+
     }
 
     // Listing 3.17 A complex many-to-many scenario for posts and tags

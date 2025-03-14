@@ -10,6 +10,7 @@ plugins {
     id "eclipse"
 }
 
+version = "0.1"
 group = "com.grails6_in_action__smith_2024"
 
 repositories {
@@ -51,6 +52,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-jetty")
     implementation("org.springframework.boot:spring-boot-starter-logging")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     // https://youtrack.jetbrains.com/issue/IDEA-327614

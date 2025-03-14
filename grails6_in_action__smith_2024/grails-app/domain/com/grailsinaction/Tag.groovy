@@ -10,4 +10,7 @@ class Tag {
     static constraints = {
         name blank: false
     }
+
+    String toString() { return "Tag $name (id: $id)" }
+    String getDisplayString() { return name }
 }

@@ -29,6 +29,5 @@ class User {
     }
 
     String toString() { return "User $loginId (id: $id)" }
-
     String getDisplayString() { return loginId }
 }

@@ -12,4 +12,7 @@ class ApplicationUser {
         applicationName blank: false, unique: true
         apiKey blank: false
     }
+
+    String toString() { return "ApplicationUser '${applicationName}' (id: ${id})" }
+    String getDisplayString() { return applicationName }
 }
