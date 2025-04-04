@@ -1,0 +1,23 @@
+
+// Grails GUI console
+
+$ grails –reloading console
+
+// At the time of writing, the console UI doesn’t automatically execute BootStrap.init on startup
+
+// run in console
+import com.grailsinaction.Post
+import grails.util.Environment
+Environment.executeForCurrentEnvironment(new BootStrap().init)
+println "There are ${Post.count()} posts in the database"
+
+// let’s say you want posts 6 to 10 for the user “phil” ordered by most recent first. The corresponding query is
+def posts = Post.where { user.loginId == "phil" }
+                .list(max: 5, offset: 5, sort: "dateCreated", order: "desc")
+println posts
+
+// Phil’s most recent post
+def latestPost = Post.where { user.loginId == "phil" }
+                     .get(max: 1, sort: "dateCreated", order: "desc")
+println latestPost
+

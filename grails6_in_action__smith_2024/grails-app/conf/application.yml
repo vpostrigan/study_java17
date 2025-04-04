@@ -66,6 +66,8 @@ hibernate:
     queries: false
     use_second_level_cache: false
     use_query_cache: false
+  format_sql: true
+  use_sql_comments: true
 
 environments:
   production:
@@ -96,6 +98,7 @@ environments:
       pooled: true
       jmxExport: true
       dbCreate: update
+      logSql: true
   test:
     dataSource:
       url: jdbc:h2:mem:devDb;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
@@ -105,3 +108,4 @@ environments:
       pooled: true
       jmxExport: true
       dbCreate: create-drop
+      logSql: true

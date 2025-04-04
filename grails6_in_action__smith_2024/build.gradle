@@ -61,6 +61,8 @@ dependencies {
     // https://stackoverflow.com/questions/40557740/could-not-resolve-all-dependencies-for-configuration-profile
     profile "org.grails.profiles:web"
 
+    implementation("org.codehaus.groovy:groovy-dateutil")
+
     compileOnly("io.micronaut:micronaut-inject-groovy")
     console("org.grails:grails-console")
     runtimeOnly("com.bertramlabs.plugins:asset-pipeline-grails:4.5.1")
