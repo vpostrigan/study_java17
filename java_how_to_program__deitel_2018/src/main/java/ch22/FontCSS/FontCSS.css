@@ -1,0 +1,32 @@
+/* FontsCSS.css */
+/* CSS rules that style the VBox and Labels */
+
+.vbox {
+   -fx-spacing: 10;
+   -fx-padding: 10;
+}
+
+#label1 {
+   -fx-font: bold 14pt Arial;
+}
+
+#label2 {
+   -fx-font: 16pt "Times New Roman";
+}
+
+#label3 {
+   -fx-font: bold italic 16pt "Courier New";
+}
+
+#label4 {
+   -fx-font-size: 14pt;
+   -fx-underline: true;
+}
+
+#label5 {
+   -fx-font-size: 14pt;
+}
+
+#label5 .text {
+   -fx-strikethrough: true;
+}

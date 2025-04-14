@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FontCSS.fxml -->
+<!-- FontCSS GUI that is styled via external CSS -->
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox styleClass="vbox" stylesheets="@FontCSS.css"
+      xmlns="http://javafx.com/javafx/8.0.60"
+      xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label fx:id="label1" text="Arial 14pt bold"/>
+        <Label fx:id="label2" text="Times New Roman 16pt plain"/>
+        <Label fx:id="label3" text="Courier New 16pt bold and italic"/>
+        <Label fx:id="label4" text="Default font 14pt with underline"/>
+        <Label fx:id="label5" text="Default font 14pt with strikethrough"/>
+    </children>
+</VBox>
