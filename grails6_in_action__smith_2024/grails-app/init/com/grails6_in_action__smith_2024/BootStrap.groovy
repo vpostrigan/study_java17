@@ -48,6 +48,19 @@ class BootStrap {
     }
 
     @Transactional
+    private createAdminUserIfRequired() {
+        println "Creating admin user"
+        if (!User.findByLoginId("admin")) {
+            println "Fresh Database. Creating ADMIN user."
+
+            def profile = new Profile(email: "admin@yourhost.com", fullName: "Administrator")
+            new User(loginId: "admin", password: "secret", profile: profile).save(failOnError: true)
+        } else {
+            println "Existing admin user, skipping creation"
+        }
+    }
+
+    @Transactional
     private createSampleData() {
         println "Creating sample data"
 
@@ -178,19 +191,6 @@ class BootStrap {
 
         dillon.dateCreated = now - 2
         dillon.save(failOnError: true, flush: true)
-    }
-
-    @Transactional
-    private createAdminUserIfRequired() {
-        println "Creating admin user"
-        if (!User.findByLoginId("admin")) {
-            println "Fresh Database. Creating ADMIN user."
-
-            def profile = new Profile(email: "admin@yourhost.com", fullName: "Administrator")
-            new User(loginId: "admin", password: "secret", profile: profile).save(failOnError: true)
-        } else {
-            println "Existing admin user, skipping creation"
-        }
     }
 
 }

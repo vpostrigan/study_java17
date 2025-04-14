@@ -1,0 +1,13 @@
+
+Scope variable    |  Survival time for entries in this scope
+-----------------------------------------------------------------------------
+request           |  Survive until the target GSP finishes rendering.
+flash             |  Survive to the next page, and the one after that.
+session           |  Survive until the current user closes the browser.
+servletContext    |  Survive until the application is restarted (this map is shared by all users).
+
+
+Request scope     |  For rendering in the view
+Flash scope       |  For surviving a redirect
+Session scope     |  For long-lived user-specific data
+Application scope |  For long-lived application-specific data

@@ -1,1 +1,4 @@
 https://deitel.com/java-how-to-program-11-e-early-objects-version/
+
+Java how to program. 9th ed. Paul Deitel. 2012.pdf
+Java How to Program. 10th Edition. Late Objects Version. Paul Deitel. 2015.pdf

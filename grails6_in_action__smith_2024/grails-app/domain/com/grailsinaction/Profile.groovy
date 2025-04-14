@@ -1,7 +1,7 @@
 package com.grailsinaction
 
 class Profile {
-    User user // 1 to 1 mapping
+    // User user // 1 to 1 mapping
     byte[] photo
     String fullName
     String bio
@@ -10,6 +10,8 @@ class Profile {
     String timezone
     String country
     String jabberAddress
+
+    static belongsTo = [ user : User ]
 
     static constraints = {
         fullName blank: false
