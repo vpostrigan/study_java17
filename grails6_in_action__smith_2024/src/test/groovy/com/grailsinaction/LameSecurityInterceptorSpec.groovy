@@ -1,3 +1,5 @@
+package com.grailsinaction
+
 
 import grails.testing.web.interceptor.InterceptorUnitTest
 import spock.lang.Specification
@@ -8,15 +10,14 @@ class LameSecurityInterceptorSpec extends Specification implements InterceptorUn
     }
 
     def cleanup() {
-
     }
 
     void "Test lameSecurity interceptor matching"() {
-        when:"A request matches the interceptor"
-            withRequest(controller:"lameSecurity")
+        when: "A request matches the interceptor"
+        withRequest(controller: "lameSecurity")
 
-        then:"The interceptor does match"
-            interceptor.doesMatch()
+        then: "The interceptor does match"
+        interceptor.doesMatch()
     }
 
 }

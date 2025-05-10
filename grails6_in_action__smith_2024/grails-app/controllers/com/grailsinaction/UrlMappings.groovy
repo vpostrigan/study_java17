@@ -3,7 +3,6 @@ package com.grailsinaction
 class UrlMappings {
 
     static mappings = {
-        "/basket/$username"(controller: "basket", action: "show")
 
         "/$controller/$action?/$id?(.${format})?"{
             constraints {
@@ -25,6 +24,19 @@ class UrlMappings {
         "/users/$id" {
             controller = "post"
             action = "timeline"
+        }
+
+        "/users/$userId/stats" {
+            controller = "user"
+            action = "stats"
+        }
+
+        "/users/$userId/feed/$format?" {
+            controller = "user"
+            action = "feed"
+            constraints {
+                format(inList: ['rss', 'atom'])
+            }
         }
 
         "/"(view:"/index")

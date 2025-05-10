@@ -57,7 +57,7 @@ dependencies {
 
     // https://youtrack.jetbrains.com/issue/IDEA-327614
     // https://stackoverflow.com/questions/78702772/grails-6-2-support-is-missing-in-intellij-idea
-    implementation("org.grails:grails-shell:6.2.2")
+    implementation("org.grails:grails-shell:6.2.3")
     // https://stackoverflow.com/questions/40557740/could-not-resolve-all-dependencies-for-configuration-profile
     profile "org.grails.profiles:web"
 

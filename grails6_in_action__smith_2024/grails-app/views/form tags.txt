@@ -1,0 +1,25 @@
+Tag                          Description
+g:form                Creates a standard HTML form element.
+g:uploadForm          Creates a form that supports nested file upload elements.
+g:textField           Creates a single-line text field.
+g:passwordField       Creates a single-line text field with opaque characters.
+g:textArea            Creates a multiline text field.
+g:checkbox            Creates a check box that returns a true or false value.
+g:radio and           Creates a radio button that can be nested in a radio group for scenarios
+ g:radioGroup            where only one option can be selected.
+g:select              Creates a drop-down box with prepopulated elements.
+g:hiddenField         Creates a field that isn’t visible in the browser.
+g:submitButton        Creates a button for submitting the form to the server.
+g:actionSubmit        Creates a button that submits the form to a particular controller action.
+                      This is not recommended. It’s best to use one submit button per form.
+                      Use styled links for anything that doesn’t submit the form, such as a cancel option.
+g:datePicker          Creates a series of drop-down lists for current time and date selection.
+g:currencySelect      Displays a user-selectable list of currencies.
+g:paginate            Displays a series of page navigation links for multipage datasets.
+g:timezoneSelect      Displays a user-selectable list of Java time zones.
+g:countrySelect       Displays a user-selectable list of countries.
+g:message             Displays a message from a message-bundle.
+g:hasErrors           Tests whether an object has validation errors.
+g:renderErrors        Renders all validation errors on an object as a list.
+g:javascript          Used to embed inline JavaScript code. Can also be used to link to an external JavaScript file or library.
+g:img                 Creates a Resource-aware link to an image.

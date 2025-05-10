@@ -72,13 +72,13 @@ class PostControllerSpec extends Specification implements ControllerUnitTest<Pos
         Post.countByUser(chuck) == 1
     }
 
-    def "Adding a valid new post to the timeline"() {
+    def "Adding a valid new post to the timeline2"() {
         given: "a mock post service"
         def mockPostService = Mock(PostService)
         1 * mockPostService.createPost(_, _) >> new Post(content: "Mock Post")
         controller.postService = mockPostService
 
-        when:  "controller is invoked"
+        when: "controller is invoked"
         def result = controller.addPost(
                 "joe_cool",
                 "Posting up a storm")
@@ -142,6 +142,7 @@ class PostControllerSpec extends Specification implements ControllerUnitTest<Pos
         null       | '/post/timeline/chuck_norris'
     }
 
+    // Listing 7.18 Testing your filter
     def "Exercising security filter for unauthenticated user"() {
 
         when:

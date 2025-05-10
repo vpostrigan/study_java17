@@ -44,6 +44,7 @@
         </fieldset>
         <fieldset class="buttons">
             <g:submitButton name="register" value="Register"/>
+            <g:link controller="post">Back to Hubbub</g:link>
         </fieldset>
         </g:form>
     </body>

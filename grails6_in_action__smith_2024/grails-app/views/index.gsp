@@ -52,6 +52,9 @@
             <div id="controllers" role="navigation">
                 <h2>Available Controllers:</h2>
                 <a href="/post/index">com.grailsinaction.PostController scaffold</a><br>
+                <a href="/post/personal">com.grailsinaction.PostController personal</a><br>
+                <a href="/post/global">com.grailsinaction.PostController global</a><br>
+                <br>
                 <ul>
                     <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
                         <li class="controller">

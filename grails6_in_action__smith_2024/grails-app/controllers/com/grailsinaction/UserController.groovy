@@ -1,8 +1,17 @@
 package com.grailsinaction
 
+import grails.gorm.transactions.Transactional
+import org.springframework.validation.Errors
+
 class UserController {
     // $ create-scaffold-controller com.grailsinaction.User
     static scaffold = User
+
+    static navigation = [
+            [group:'tabs', action:'search', order: 90],
+            [action: 'advSearch', title: 'Advanced Search', order: 95],
+            [action: 'register', order: 99, isVisible: { true }]
+    ]
 
     def search() {
     }
@@ -38,6 +47,7 @@ class UserController {
     }
 
     // http://localhost:8080/user/register
+    @Transactional
     def register() {
         if (request.method == "POST") {
             def user = new User(params)
@@ -52,7 +62,26 @@ class UserController {
         }
     }
 
+    @Transactional
+    def register1(UserRegistrationCommand urc) {
+        if (urc.hasErrors()) {
+            render view: "register1", model: [user: urc]
+        } else {
+            def user = new User(urc.properties)
+            user.profile = new Profile(urc.properties)
+            if (user.validate() && user.save()) {
+                flash.message = "Welcome aboard, ${urc.fullName ?: urc.loginId}"
+                redirect(uri: '/')
+            } else {
+                def errors = user.getErrors()
+                // maybe not unique loginId?
+                return [user: urc, userSave: user]
+            }
+        }
+    }
+
     // Listing 7.12 A register action that uses command objects
+    @Transactional
     def register2(UserRegistrationCommand urc) {
         if (urc.hasErrors()) {
             render view: "register", model: [user: urc]

@@ -3,6 +3,7 @@ import grails.testing.gorm.DataTest
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
+// Listing 7.20 UrlMappingsSpec.groovy tests UrlMappings are working
 class UrlMappingsSpec extends Specification implements ControllerUnitTest<PostController>, DataTest {
 
     def "Ensure basic mapping operations for user permalink"() {

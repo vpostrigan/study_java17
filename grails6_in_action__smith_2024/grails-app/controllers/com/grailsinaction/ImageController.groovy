@@ -8,7 +8,10 @@ class PhotoUploadCommand {
 // Listing 7.14 Handling image uploading via a command object
 class ImageController {
 
+    def imageService
+
     def upload(PhotoUploadCommand puc) {
+        println "Starting upload"
         def user = User.findByLoginId(puc.loginId)
         user.profile.photo = puc.photo
         redirect controller: "user", action: "profile", id: puc.loginId
