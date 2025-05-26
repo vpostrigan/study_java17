@@ -4,7 +4,7 @@
         <title>Welcome Aboard</title>
         <style type="text/css">
             body {
-                font-family: "Trebuchet MS";
+                font-family: "Trebuchet MS"
             }
         </style>
     </head>
@@ -17,5 +17,4 @@
             <strong>The Hubbub Team.</strong>
         </p>
     </body>
-
 </html>

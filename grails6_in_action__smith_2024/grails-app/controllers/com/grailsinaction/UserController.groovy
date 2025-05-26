@@ -1,14 +1,15 @@
 package com.grailsinaction
 
 import grails.gorm.transactions.Transactional
-import org.springframework.validation.Errors
 
 class UserController {
     // $ create-scaffold-controller com.grailsinaction.User
     static scaffold = User
 
+    def mailService
+
     static navigation = [
-            [group:'tabs', action:'search', order: 90],
+            [group: 'tabs', action: 'search', order: 90],
             [action: 'advSearch', title: 'Advanced Search', order: 95],
             [action: 'register', order: 99, isVisible: { true }]
     ]
@@ -107,6 +108,34 @@ class UserController {
         }
     }
 
+    // Listing 10.2 Sending a welcome email
+    def welcomeEmail0() {
+        if (params.email) {
+            mailService.sendMail {
+                to params.email
+                subject "Welcome to Hubbub!"
+                text """
+                Hi, ${params.email}. Great to have you on board.
+                The Hubbub Team.
+                """
+            }
+            flash.message = "Welcome aboard"
+        }
+        redirect(uri: "/")
+    }
+
+    // Listing 10.4 An updated welcome action that defers to the view for rendering
+    def welcomeEmail(String email) {
+        if (email) {
+            mailService.sendMail {
+                to email
+                subject "Welcome to Hubbub!"
+                html view: "/user/welcomeEmail", model: [email: email]
+            }
+            flash.message = "Welcome aboard"
+        }
+        redirect(uri: "/")
+    }
 }
 
 class UserRegistrationCommand {

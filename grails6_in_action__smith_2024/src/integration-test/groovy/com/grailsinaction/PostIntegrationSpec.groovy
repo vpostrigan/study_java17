@@ -5,6 +5,14 @@ import spock.lang.*
 
 class PostIntegrationSpec extends Specification implements DomainUnitTest<User> {
 
+    def searchableService
+
+    def setup() {
+        // The Searchable plugin breaks the second test if we don't disable
+        // mirroring before it runs.
+        searchableService.stopMirroring()
+    }
+
     // Listing 3.11 The User.addToPosts() method makes 1:m relationships easy
     // Once you have a one-to-many relationship between User and Post,
     // Grails automatically adds two new methods to your User class:

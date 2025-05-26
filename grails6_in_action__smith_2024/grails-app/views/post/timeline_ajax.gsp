@@ -6,6 +6,7 @@
         <meta name="layout" content="main"/>
         <g:javascript library="jquery"/>
         <g:if test="${user.profile?.skin}">
+            <%-- <g:external dir="css" file="${user.profile.skin}.css"/> --%>
             <asset:stylesheet src="${user.profile.skin}.css"/>
         </g:if>
 <g:javascript>
@@ -33,7 +34,7 @@
                 ${flash.message}
             </div>
         </g:if>
-        
+
         <div id="newPost">
             <h3>
                 What is ${user.profile.fullName} hacking on right now?
@@ -51,7 +52,7 @@
                     <a href="#" id="showHideUrl" onclick="toggleTinyUrl(); return false;">
                         Show TinyURL
                     </a>
-                         
+
                      <g:img id="spinner" style="display: none" uri="/images/spinner.gif"/>
                 </g:form>
 
@@ -74,8 +75,8 @@
                     }
                 }
                 </r:script>
-                
-            
+
+
                 <%--
                 <g:form action="addPost" id="${params.id}">
                     <g:textArea id='postContent' name="content"

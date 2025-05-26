@@ -22,7 +22,6 @@ class PostService {
             }
         }
         throw new PostException(message: "Invalid User Id")
-
     }
 
     def getGlobalTimelineAndCount(params) {
@@ -43,7 +42,6 @@ class PostService {
         if (!params.offset)
             params.offset = 0
 
-
         def user = User.findByLoginId(userId)
         def idsToInclude = user.following.collect { u -> u.id }
         idsToInclude.add(user.id)
@@ -54,9 +52,7 @@ class PostService {
         def postCount = Post.findAll(query).size() // TODO use count criteria
         println "Post count is ${posts?.size()}"
         return [ posts, postCount ]
-
     }
-
 
     def getUserPosts(userId, params) {
 
@@ -67,12 +63,7 @@ class PostService {
         def postCount = Post.countByUser(user)
         def posts = Post.findAllByUser(user, params)
         return [ posts, postCount ]
-
     }
-
-
-
-
 
 }
 

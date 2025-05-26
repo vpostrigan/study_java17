@@ -6,6 +6,17 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 /**
+ * grails test-app unit:spock  // <phase>:<type>
+ * test-app unit:              // Run all tests in unit phase
+ * test-app :spock             // Run Spock tests in all phases
+ * test-app unit:unit integration:spock   // Run JUnit unit tests and Spock integration tests
+ */
+
+/**
+ * grails test-app com.grailsinaction.PostControllerSpec
+ */
+
+/**
  * https://joelforjava.com/blog/2018/08/17/updating-from-grails-test-mixin-framework-to-grails-testing-support-framework.html
  */
 // OLD
@@ -114,6 +125,7 @@ class PostControllerSpec extends Specification implements ControllerUnitTest<Pos
         then: "our flash message and redirect confirms the success"
         flash.message == errorMsg
         response.redirectedUrl == "/post/timeline/${chuck.loginId}"
+        // response.redirectedUrl == "/users/${chuck.loginId}"
         Post.countByUser(chuck) == 0
 
         // Without the custom URL mapping, the check would be this:
@@ -140,6 +152,8 @@ class PostControllerSpec extends Specification implements ControllerUnitTest<Pos
         suppliedId | expectedUrl
         'joe_cool' | '/post/timeline/joe_cool'
         null       | '/post/timeline/chuck_norris'
+        // 'joe_cool'  |   '/users/joe_cool'
+        // null        |   '/users/chuck_norris'
     }
 
     // Listing 7.18 Testing your filter

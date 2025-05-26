@@ -9,6 +9,12 @@ import grails.testing.gorm.DomainUnitTest
  */
 class UserIntegrationSpec extends Specification implements DomainUnitTest<User> {
 
+    // plugins {
+    //   // ... other plugins omitted
+    //   test ':dumbster:0.2'
+    // }
+    def dumbster
+
     void "1"() {
         expect:
         1 == 1
@@ -125,6 +131,28 @@ class UserIntegrationSpec extends Specification implements DomainUnitTest<User> 
         then: "Follower counts should match following people"
         2 == joe.following.size()
         1 == jill.following.size()
+
+    }
+
+    // Listing 10.5 Testing mail sending using the Dumbster plugin
+    def "Welcome email is generated and sent"() {
+
+        given: "An empty inbox"
+        dumbster.reset()
+
+        and: "a user controller"
+        def userController = new UserController()
+
+        when: "A welcome email is sent"
+        userController.welcomeEmail("tester@email.com")
+
+
+        then: "It appears in their inbox"
+        dumbster.messageCount == 1
+        def msg = dumbster.getMessages().first()
+        msg.subject ==  "Welcome to Hubbub!"
+        msg.to == "tester@email.com"
+        msg.body =~ /The Hubbub Team/
 
     }
 
