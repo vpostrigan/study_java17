@@ -10,6 +10,8 @@ class UrlMappings {
             }
         }
 
+        "/login/form"(controller: "auth", action: "form")
+
         "/timeline/chuck_norris" {
             controller = "post"
             action = "timeline"
@@ -39,9 +41,16 @@ class UrlMappings {
             }
         }
 
+        "/api/posts"(resources: "postRest")
+
         "/"(view:"/index")
+
         "500"(view:'/error')
+        // 12.2 Rest API
+        // "500"(controller: "error", action: "internalServer")
+
         "404"(view:'/notFound')
+        // "404"(controller: "error", action: "notFound")
     }
 
 }

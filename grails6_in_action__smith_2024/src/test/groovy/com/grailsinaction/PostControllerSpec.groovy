@@ -1,7 +1,9 @@
 package com.grailsinaction
 
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.testing.gorm.DataTest
 import grails.testing.web.controllers.ControllerUnitTest
+import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -28,14 +30,39 @@ import spock.lang.Unroll
 // $ grails create-unit-test command
 class PostControllerSpec extends Specification implements ControllerUnitTest<PostController>, DataTest {
 
+    @Shared
+    def mockSecurityService
+
     def setupSpec() {
         // Adds mock save() and find() methods to User
         mockDomains(User, Post)
+
+        mockSecurityService = Mock(SpringSecurityService)
+        mockSecurityService.encodePassword(_ as String) >> "kjsdfhkshfalhlkdshflas"
     }
 
     def "Get a users timeline given their id"() {
         given: "A user with posts in the db"
         User chuck = new User(loginId: "chuck_norris", password: "password")
+        chuck.addToPosts(new Post(content: "A first post"))
+        chuck.addToPosts(new Post(content: "A second post"))
+        chuck.save(failOnError: true)
+
+        and: "A loginId parameter"
+        params.id = chuck.loginId
+
+        when: "the timeline is invoked"
+        def model = controller.timeline()
+
+        then: "the user is in the returned model"
+        model.user.loginId == "chuck_norris"
+        model.user.posts.size() == 2
+    }
+
+    def "Get a users timeline given their id2"() {
+        given: "A user with posts in the db"
+        User chuck = new User(loginId: "chuck_norris")
+        chuck.passwordHash = "ksadhfkasjdfh"
         chuck.addToPosts(new Post(content: "A first post"))
         chuck.addToPosts(new Post(content: "A second post"))
         chuck.save(failOnError: true)
@@ -103,6 +130,28 @@ class PostControllerSpec extends Specification implements ControllerUnitTest<Pos
 
     }
 
+    def "Adding a valid new post to the timeline2"() {
+        given: " mock post and security services"
+        def mockPostService = Mock(PostService)
+        1 * mockPostService.createPost(_, _) >> new Post(content: "Mock Post")
+        controller.postService = mockPostService
+
+        def securityService = Mock(SpringSecurityService)
+        _ * securityService.getCurrentUser() >> new User(loginId: "joe_cool")
+        controller.springSecurityService = securityService
+
+        when:  "controller is invoked"
+        def result = controller.addPost("Mock Post")
+
+        then: "redirected to timeline, flash message tells us all is well"
+        flash.message ==~ /Added new post: Mock.*/
+        response.redirectedUrl == '/users/joe_cool'
+
+        // Without the custom URL mapping, the check would be this:
+//        response.redirectedUrl == '/post/timeline/joe_cool'
+
+    }
+
     def "Adding an invalid new post to the timeline"() {
         given: "A user with posts in the db"
         User chuck = new User(loginId: "chuck_norris", password: "password").save(failOnError: true)
@@ -127,6 +176,30 @@ class PostControllerSpec extends Specification implements ControllerUnitTest<Pos
         response.redirectedUrl == "/post/timeline/${chuck.loginId}"
         // response.redirectedUrl == "/users/${chuck.loginId}"
         Post.countByUser(chuck) == 0
+
+        // Without the custom URL mapping, the check would be this:
+//        response.redirectedUrl == "/post/timeline/${chuck.loginId}"
+    }
+
+    def "Adding an invalid new post to the timeline2"() {
+        given: "mock post and security services"
+        def errorMsg = "Invalid or empty post"
+        def mockPostService = Mock(PostService)
+        1 * mockPostService.createPost(_, _) >> {
+            throw new PostException(message: errorMsg)
+        }
+        controller.postService = mockPostService
+
+        def securityService = Mock(SpringSecurityService)
+        _ * securityService.getCurrentUser() >> new User(loginId: "chuck_norris")
+        controller.springSecurityService = securityService
+
+        when: "addPost is invoked"
+        def model = controller.addPost(null)
+
+        then: "our flash message and redirect confirms the failure"
+        flash.message == errorMsg
+        response.redirectedUrl == "/users/chuck_norris"
 
         // Without the custom URL mapping, the check would be this:
 //        response.redirectedUrl == "/post/timeline/${chuck.loginId}"

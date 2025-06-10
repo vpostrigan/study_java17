@@ -12,6 +12,10 @@
 - [https://grails-fields-plugin.github.io/grails-fields/latest/guide/index.html](https://grails-fields-plugin.github.io/grails-fields/latest/guide/index.html)
 ---
 
+
+$ docker run -p 27017:27017 --name mongo__8_0_11 --pull missing mongo:8.0.11
+
+
 ### Grails in Action, Second Edition 2014
 PART 1 INTRODUCING GRAILS.......................................1
 1    Grails in a hurry . . . 3

@@ -14,6 +14,8 @@ class UserController {
             [action: 'register', order: 99, isVisible: { true }]
     ]
 
+    def springSecurityService
+
     def search() {
     }
 
@@ -52,6 +54,8 @@ class UserController {
     def register() {
         if (request.method == "POST") {
             def user = new User(params)
+            // user.password = springSecurityService.encodePassword(params.password)
+            // user.passwordHash = springSecurityService.encodePassword(params.password)
             if (user.validate()) {
                 user.save()
                 flash.message = "Successfully Created User"
@@ -88,6 +92,8 @@ class UserController {
             render view: "register", model: [user: urc]
         } else {
             def user = new User(urc.properties)
+            //user.password = springSecurityService.encodePassword(urc.password)
+            //user.passwordHash = springSecurityService.encodePassword(urc.password)
             user.profile = new Profile(urc.properties)
             if (user.validate() && user.save()) {
                 flash.message = "Welcome aboard, ${urc.fullName ?: urc.loginId}"

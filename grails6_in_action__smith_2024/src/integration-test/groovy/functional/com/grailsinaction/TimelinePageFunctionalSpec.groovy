@@ -9,6 +9,7 @@ class TimelinePageFunctionalSpec extends GebReportingSpec {
 
     def "Does timeline load for user 'phil'"() {
         when: "We navigate to the timeline page for the user 'phil'"
+        // login "frankie", "testing"
         to TimelinePage, "phil" // test browser navigates to the URL /users/phil
         // to TimelinePage, "phil", max: 10, offset: 0    // navigates to /users/phil?max=10&offset=0
 

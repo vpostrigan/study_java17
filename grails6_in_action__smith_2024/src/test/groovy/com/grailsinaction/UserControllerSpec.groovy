@@ -26,6 +26,11 @@ class UserControllerSpec extends Specification implements ControllerUnitTest<Use
         params['profile.email'] = "glen@bytecode.com.au"
         params['profile.homepage'] = "http://blogs.bytecode.com.au/glen"
 
+        and: "a mock security service"
+//        controller.springSecurityService = Stub(SpringSecurityService) {
+//            encodePassword("winnning") >> "HFDJDKALSJDF"
+//        }
+
         when: "the user is registered"
         request.method = "POST"
         controller.register()
@@ -83,6 +88,11 @@ class UserControllerSpec extends Specification implements ControllerUnitTest<Use
 
         and: "which has been validated"
         urc.validate()
+
+        and: "a mock security service"
+//        controller.springSecurityService = Stub(SpringSecurityService) {
+//            encodePassword("winnning") >> "HFDJDKALSJDF"
+//        }
 
         when: "the register action is invoked"
         controller.register2(urc)

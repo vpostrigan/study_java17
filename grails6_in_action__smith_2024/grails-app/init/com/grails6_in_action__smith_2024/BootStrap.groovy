@@ -1,17 +1,74 @@
 package com.grails6_in_action__smith_2024
 
+import auth.Role0
+import auth.User0
+import auth.UserRole
 import com.grailsinaction.Post
 import com.grailsinaction.Profile
 import com.grailsinaction.User
+import grails.converters.*
 import grails.gorm.transactions.Transactional
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.util.Environment
+
+import java.text.SimpleDateFormat
 
 import static java.util.Calendar.*
 
 class BootStrap {
 
+    // def searchableService
+    SpringSecurityService springSecurityService
+
     def init = { servletContext ->
         log.info("started.")
+
+        // Listing 12.9 Registering a second JSON marshaler
+        def dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss")
+        JSON.createNamedConfig("v1") { cfg ->
+            cfg.registerObjectMarshaller(Post) { Post p ->
+                return [ // id: p.id,
+                         published: dateFormatter.format(p.dateCreated),
+                         message: p.content,
+                         user: p.user.loginId,
+                         tags: p.tags.collect { it.name } ]
+            }
+        }
+
+        JSON.createNamedConfig("v2") { cfg ->
+            cfg.registerObjectMarshaller(Post) { Post p ->
+                return [ published: dateFormatter.format(p.dateCreated),
+                         message: p.content,
+                         user: [id: p.user.loginId,
+                                name: p.user.profile.fullName],
+                         tags: p.tags.collect { it.name } ]
+            }
+        }
+
+        XML.registerObjectMarshaller(Post) { Post p, converter ->
+            converter.attribute "id", p.id.toString()
+            converter.attribute "published", dateFormatter.format(p.dateCreated)
+            converter.build {
+                message p.content
+                user p.user.loginId
+                // user p.user.profile?.fullName
+                tags {
+                    for (t in p.tags) {
+                        tag t.name
+                    }
+                }
+            }
+        }
+
+        /*
+        // Register an XML marshaller that returns a map rather than uses builder syntax.
+        XML.registerObjectMarshaller(Post) { Post p ->
+            return [ published: dateFormatter.format(p.dateCreated),
+                content: p.content,
+                user: p.user.profile.fullName,
+                tags: p.tags.collect { it.name } ]
+        }
+        */
 
         // grails -Dgrails.env=staging war   (war - defaults to production)
 
@@ -44,6 +101,7 @@ class BootStrap {
         // Admin user is required for all environments
         createAdminUserIfRequired()
     }
+
     def destroy = {
     }
 
@@ -55,8 +113,34 @@ class BootStrap {
 
             def profile = new Profile(email: "admin@yourhost.com", fullName: "Administrator")
             new User(loginId: "admin", password: "secret", profile: profile).save(failOnError: true)
+
+            // def adminRole = new Role(authority: "ROLE_ADMIN").save(failOnError: true)
+            // def adminUser = new User(
+            //         loginId: "admin",
+            //         passwordHash: springSecurityService.encodePassword("secret"),
+            //         profile: profile,
+            //         enabled: true).save(failOnError: true)
+            // UserRole.create adminUser, adminRole
         } else {
             println "Existing admin user, skipping creation"
+        }
+
+        // //
+
+        User0.withTransaction {
+            Role0 userRole = Role0.findOrSaveWhere(authority: 'ROLE_USER')
+
+            User0 user = User0.findByUsername("admin2")
+            if (!user) {
+                user = new User0(
+                        username: 'admin2',
+                        password: springSecurityService.encodePassword("password"))
+                        .save(failOnError: true, flush: true)
+            }
+
+            if (!UserRole.exists(user.id, userRole.id)) {
+                UserRole.create(user, userRole, true)
+            }
         }
     }
 
@@ -73,6 +157,7 @@ class BootStrap {
             chuck = new User(
                     loginId: "chuck_norris",
                     password: "highkick",
+                    // passwordHash: springSecurityService.encodePassword("highkick"),
                     profile: new Profile(fullName: "Chuck Norris", email: "chuck@nowhere.net"),
                     dateCreated: now).save(failOnError: true)
         }
@@ -81,6 +166,7 @@ class BootStrap {
             glen = new User(
                     loginId: "glen",
                     password: "sheldon",
+                    // passwordHash: springSecurityService.encodePassword("sheldon"),
                     profile: new Profile(fullName: "Glen Smith", email: "glen@nowhere.net"),
                     dateCreated: now).save(failOnError: true)
         }
@@ -89,6 +175,7 @@ class BootStrap {
             peter = new User(
                     loginId: "peter",
                     password: "mandible",
+                    // passwordHash: springSecurityService.encodePassword("mandible"),
                     profile: new Profile(fullName: "Peter Ledbrook", email: "peter@nowhere.net"),
                     dateCreated: now).save(failOnError: true)
         }
@@ -97,6 +184,7 @@ class BootStrap {
             frankie = new User(
                     loginId: "frankie",
                     password: "testing",
+                    // passwordHash: springSecurityService.encodePassword("testing"),
                     profile: new Profile(fullName: "Frankie Goes to Hollywood", email: "frankie@nowhere.net"),
                     dateCreated: now).save(failOnError: true)
         }
@@ -105,6 +193,7 @@ class BootStrap {
             sara = new User(
                     loginId: "sara",
                     password: "crikey",
+                    // passwordHash: springSecurityService.encodePassword("crikey"),
                     profile: new Profile(fullName: "Sara Miles", email: "sara@nowhere.net"),
                     dateCreated: now.time - 2).save(failOnError: true)
         }
@@ -113,6 +202,7 @@ class BootStrap {
             phil = new User(
                     loginId: "phil",
                     password: "thomas",
+                    // passwordHash: springSecurityService.encodePassword("thomas"),
                     profile: new Profile(fullName: "Phil Potts", email: "phil@nowhere.net"),
                     dateCreated: now)
         }
@@ -121,6 +211,7 @@ class BootStrap {
             dillon = new User(
                     loginId: "dillon",
                     password: "crikey",
+                    // passwordHash: springSecurityService.encodePassword("crikey"),
                     profile: new Profile(fullName: "Dillon Jessop", email: "dillon@nowhere.net"),
                     dateCreated: now.time - 2).save(failOnError: true)
         }
@@ -191,6 +282,10 @@ class BootStrap {
 
         dillon.dateCreated = now - 2
         dillon.save(failOnError: true, flush: true)
+
+        // Now that the data has been persisted, we can index it and re-enable mirroring.
+        // searchableService.index()
+        // searchableService.startMirroring()
     }
 
 }

@@ -1,8 +1,17 @@
 package com.grailsinaction
 
+import auth.Role0
+import auth.UserRole
+
 class User {
     String loginId
     String password
+    // String passwordHash
+//    boolean enabled = true
+//    boolean accountExpired
+//    boolean accountLocked
+//    boolean passwordExpired
+
     String homepage
 
     Date dateCreated
@@ -11,6 +20,8 @@ class User {
     // User object should link to many Post objects
     // Specifies User has many Posts and Tags. And self-referencing relationship
     static hasMany = [posts: Post, tags: Tag, following: User]
+
+    static transients = ['springSecurityService']
 
     static constraints = {
         // unique constraint on the User to ensure that two users don’t have the same loginId
@@ -24,8 +35,16 @@ class User {
         profile nullable: true
     }
 
+    static searchable = {
+        except = ["password", "passwordHash"]
+    }
+
     static mapping = {
         posts sort: "dateCreated", order: "desc"  // when iterating over user.posts.each
+    }
+
+    Set<Role0> getAuthorities() {
+        UserRole.findAllByUser(this).collect { it.role } as Set
     }
 
     String toString() { return "User $loginId (id: $id)" }

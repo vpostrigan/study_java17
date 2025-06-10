@@ -26,6 +26,7 @@ class UserIntegrationSpec extends Specification implements DomainUnitTest<User> 
         given: "A brand new user"
         def joe = new User(loginId: 'joe', password: 'secret',
                 homepage: 'http://www.grailsinaction.com')
+        // def joe = new User(loginId: 'joe', passwordHash: 'secret')
 
         when: "the user is saved"
         joe.save()
@@ -43,15 +44,18 @@ class UserIntegrationSpec extends Specification implements DomainUnitTest<User> 
         given: "An existing user"
         def existingUser = new User(loginId: 'joe', password: 'secret',
                 homepage: 'http://www.grailsinaction.com')
+        // def existingUser = new User(loginId: 'joe', passwordHash: 'secret')
         existingUser.save(failOnError: true)
 
         when: "A property is changed"
         def foundUser = User.get(existingUser.id)
         foundUser.password = 'sesame'
+        // foundUser.loginId = 'jane'
         foundUser.save(failOnError: true)
 
         then: "The change is reflected in the database"
         User.get(existingUser.id).password == 'sesame'
+        // User.get(existingUser.id).loginId == 'jane'
 
     }
 
@@ -60,6 +64,7 @@ class UserIntegrationSpec extends Specification implements DomainUnitTest<User> 
 
         given: "An existing user"
         def user = new User(loginId: 'joe', password: 'secret')
+        // def user = new User(loginId: 'joe', passwordHash: 'secret')
         user.save(failOnError: true)
 
         when: "The user is deleted"
@@ -79,6 +84,7 @@ class UserIntegrationSpec extends Specification implements DomainUnitTest<User> 
 
         given: "A user which fails several field validations"
         def user = new User(loginId: 'joe', password: 'tiny', homepage: 'not-a-url')
+        // def user = new User(loginId: 'me', passwordHash: 'tiny')
 
         when: "The user is validated"
         user.validate()
@@ -102,11 +108,13 @@ class UserIntegrationSpec extends Specification implements DomainUnitTest<User> 
 
         given: "A user that has invalid properties"
         def chuck = new User(loginId: 'chuck', password: 'tiny')
+        // def chuck = new User(loginId: 'me', passwordHash: 'tiny')
         assert chuck.save() == null
         assert chuck.hasErrors()
 
         when: "We fix the invalid properties"
         chuck.password = "fistfist"
+        // chuck.loginId = "joe"
         chuck.validate()
 
         then: "The user saves and validates fine"
@@ -122,6 +130,9 @@ class UserIntegrationSpec extends Specification implements DomainUnitTest<User> 
         def joe = new User(loginId: 'joe', password: 'password').save()
         def jane = new User(loginId: 'jane', password: 'password').save()
         def jill = new User(loginId: 'jill', password: 'password').save()
+        // def joe = new User(loginId: 'joe', passwordHash:'password').save()
+        // def jane = new User(loginId: 'jane', passwordHash:'password').save()
+        // def jill = new User(loginId: 'jill', passwordHash:'password').save()
 
         when: "Joe follows Jane & Jill, and Jill follows Jane"
         joe.addToFollowing(jane)

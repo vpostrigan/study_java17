@@ -14,6 +14,7 @@ class Post {
         content blank: false
     }
 
+    // searchable plugin
     static searchable = {
         user component: true
         spellCheck "include"

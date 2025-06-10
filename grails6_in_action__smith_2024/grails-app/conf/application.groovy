@@ -14,9 +14,9 @@ grails {
 }
 
 // Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'auth.User'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'auth.User0'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'auth.UserRole'
-grails.plugin.springsecurity.authority.className = 'auth.Role'
+grails.plugin.springsecurity.authority.className = 'auth.Role0'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
@@ -39,3 +39,13 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
 
+// RestApi
+// Basic Authentication requires realm name. We recommend the app name.
+// grails.plugin.springsecurity.useBasicAuth = true
+// grails.plugin.springsecurity.basic.realmName = "Hubbub"
+// grails.plugin.springsecurity.filterChain.chainMap = [
+// 		'/api/**': 'JOINED_FILTERS',
+// 		'/**': 'JOINED_FILTERS,-basicAuthenticationFilter, -basicExceptionTranslationFilter'
+// ]
+// grails.plugin.springsecurity.auth.loginFormUrl = "/login/form"
+// grails.plugin.springsecurity.successHandler.defaultTargetUrl = "/timeline"

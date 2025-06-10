@@ -15,6 +15,9 @@ class PostServiceSpec extends Specification implements ServiceUnitTest<PostServi
 
         given: "A new user in the db"
         new User(loginId: "chuck_norris", password: "password").save(failOnError: true)
+        // User chuck = new User(loginId: "chuck_norris")
+        // chuck.passwordHash = "ksadhfkasjdfh"
+        // chuck.save(failOnError: true)
 
         when: "a new post is created by the service"
         def newPost = service.createPost("chuck_norris", "First Post!")
@@ -29,6 +32,9 @@ class PostServiceSpec extends Specification implements ServiceUnitTest<PostServi
 
         given: "A new user in the db"
         new User(loginId: "chuck_norris", password: "password").save(failOnError: true)
+        // def chuck = new User(loginId: "chuck_norris")
+        // chuck.passwordHash = "ksadhfkasjdfh"
+        // chuck.save(failOnError: true)
 
         when: "an invalid post is attempted"
         def newPost = service.createPost("chuck_norris", null)
