@@ -3,7 +3,6 @@ package com.grailsinaction
 import grails.gorm.transactions.Transactional
 
 class Post2Controller {
-    static scaffold = true
 
     static defaultAction = "home"
 

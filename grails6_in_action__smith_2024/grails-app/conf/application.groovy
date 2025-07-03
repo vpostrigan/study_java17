@@ -13,6 +13,30 @@ grails {
     }
 }
 
+grails.plugin.databasemigration.updateOnStart = true
+grails.plugin.databasemigration.updateOnStartFileNames = ['changelog.groovy']
+
+grails.cache.config = {
+	defaultCache {
+		maxElementsInMemory 10000
+		eternal false
+		timeToIdleSeconds 120
+		timeToLiveSeconds 120
+		overflowToDisk true
+		maxElementsOnDisk 10000000
+		diskPersistent false
+		diskExpiryThreadIntervalSeconds 120
+		memoryStoreEvictionPolicy 'LRU'
+	}
+
+	cache {
+		name 'myDailyCache'
+		timeToLiveSeconds 60*60*24
+	}
+
+}
+
+
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'auth.User0'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'auth.UserRole'
@@ -36,7 +60,7 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**/css/**',      filters: 'none'],
 	[pattern: '/**/images/**',   filters: 'none'],
 	[pattern: '/**/favicon.ico', filters: 'none'],
-	[pattern: '/**',             filters: 'JOINED_FILTERS']
+	//[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
 
 // RestApi
@@ -49,3 +73,10 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 // ]
 // grails.plugin.springsecurity.auth.loginFormUrl = "/login/form"
 // grails.plugin.springsecurity.successHandler.defaultTargetUrl = "/timeline"
+
+grails {
+	neo4j {
+		type = "embedded"
+		location = "data/neo4j"
+	}
+}

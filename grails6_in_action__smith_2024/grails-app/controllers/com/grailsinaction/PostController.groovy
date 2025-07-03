@@ -10,7 +10,8 @@ class PostController {
 
     static navigation = [
             [group: 'tabs', action: 'personal', title: 'My Timeline', order: 0],
-            [action: 'global', title: 'Global Timeline', order: 1]
+            [action: 'global', title: 'Global Timeline', order: 1],
+            [action: 'singlepage', title: 'Single Page App', order: 2]
     ]
 
 
@@ -139,6 +140,15 @@ class PostController {
         def tinyUrl = new URL("http://tinyurl.com/api-create.php?url=${origUrl}").text
         render(contentType: "application/json") {
             urls(small: tinyUrl, full: fullUrl)
+        }
+    }
+
+    def singlepage() {
+        def user = params.id ? User.findByLoginId(params.id) : springSecurityService.currentUser
+        if (!user) {
+            response.sendError(404)
+        } else {
+            [ user : user ]
         }
     }
 
