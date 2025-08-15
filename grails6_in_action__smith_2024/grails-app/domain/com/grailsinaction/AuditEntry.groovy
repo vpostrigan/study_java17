@@ -2,6 +2,7 @@ package com.grailsinaction
 
 import org.bson.types.ObjectId
 
+// Listing 16.4 Defining an AuditEntry object to store in MongoDB
 class AuditEntry {
 
     static mapWith = "mongo"

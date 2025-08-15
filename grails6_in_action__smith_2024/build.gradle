@@ -95,6 +95,8 @@ dependencies {
     // implementation 'org.grails.plugins:grails-mail'
     implementation 'org.grails.plugins:grails-redis:4.0.1'
     implementation 'org.grails.plugins:mongodb:8.2.0'
+    //implementation 'org.grails.plugins:neo4j:8.1.0'
+    //implementation 'org.neo4j.test:neo4j-harness:5.22.0'
 
     implementation("org.springframework.boot:spring-boot-autoconfigure")
     implementation("org.springframework.boot:spring-boot-starter")
@@ -105,8 +107,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation 'org.springframework.boot:spring-boot-starter-activemq'
     implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
-
-    implementation 'org.neo4j:neo4j:4.4.0'
 
     // https://youtrack.jetbrains.com/issue/IDEA-327614
     // https://stackoverflow.com/questions/78702772/grails-6-2-support-is-missing-in-intellij-idea

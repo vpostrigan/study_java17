@@ -4,6 +4,10 @@ info:
     version: '@info.app.version@'
     grailsVersion: '@info.app.grailsVersion@'
 grails:
+  neo4j:
+    embedded: false
+    type: embedded
+    location: "data/neo4j"
   mime:
     disable:
       accept:

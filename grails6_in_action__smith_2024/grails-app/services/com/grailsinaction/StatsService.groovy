@@ -1,6 +1,7 @@
 package com.grailsinaction
 
 // Listing 16.1 A StatsService storing daily totals in Redis
+// Listing 16.5 Enhancing StatsService
 class StatsService {
 
     static transactional = false
@@ -78,6 +79,7 @@ class StatsService {
 
     }
 
+    // Listing 16.3 Getting back an ordered list of top posters for the day
     def getTodaysTopPosters() {
         String dateToday = new Date().format("yy-MM-dd")
         String redisTotalsByUserKey = "daily.stat.totalsByUser.${dateToday}"
