@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.springboot2_crud_app__softdev_2021</groupId>
+    <groupId>study.springboot2_crud_app__softdev_2021</groupId>
     <artifactId>springboot2_crud_app__softdev_2021</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 

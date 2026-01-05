@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.springboot2_es7__medium_com_2020</groupId>
+    <groupId>study.springboot2_es7__medium_com_2020</groupId>
     <artifactId>springboot2_es7__medium_com_2020</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 

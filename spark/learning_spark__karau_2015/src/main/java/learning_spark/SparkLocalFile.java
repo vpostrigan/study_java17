@@ -1,12 +1,12 @@
 package learning_spark;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.storage.StorageLevel;
-import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.File;
 import java.io.Serializable;

@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.swagger_v3_openapi_springboot2</groupId>
+    <groupId>study.swagger_v3_openapi_springboot2</groupId>
     <artifactId>swagger_v3_openapi_springboot2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 

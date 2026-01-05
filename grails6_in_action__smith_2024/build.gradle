@@ -25,7 +25,7 @@ plugins {
 }
 
 version = "0.1"
-group = "com.grails6_in_action__smith_2024"
+group = "study.grails6_in_action__smith_2024"
 
 repositories {
     mavenCentral()
